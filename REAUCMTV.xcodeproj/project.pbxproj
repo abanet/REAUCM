@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C028A7FB1D2E63DE0014C810 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FA1D2E63DE0014C810 /* Video.swift */; };
+		C028A7FE1D2E696B0014C810 /* UnidadDidactiva.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */; };
+		C028A8001D2E6CE30014C810 /* Rea.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FF1D2E6CE30014C810 /* Rea.swift */; };
+		C06CABBC1D2D2D2C00704668 /* VideoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06CABBB1D2D2D2C00704668 /* VideoStore.swift */; };
+		C0E80B971D2FCECC005A8417 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E80B961D2FCECC005A8417 /* SwiftyJSON.swift */; };
 		C0F3D44A1D2A7E02009BCC5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F3D4491D2A7E02009BCC5A /* AppDelegate.swift */; };
 		C0F3D44C1D2A7E02009BCC5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F3D44B1D2A7E02009BCC5A /* ViewController.swift */; };
 		C0F3D44F1D2A7E02009BCC5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F3D44D1D2A7E02009BCC5A /* Main.storyboard */; };
@@ -14,6 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C028A7FA1D2E63DE0014C810 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = ../Video.swift; sourceTree = "<group>"; };
+		C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnidadDidactiva.swift; path = ../UnidadDidactiva.swift; sourceTree = "<group>"; };
+		C028A7FF1D2E6CE30014C810 /* Rea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Rea.swift; path = ../Rea.swift; sourceTree = "<group>"; };
+		C06CABBB1D2D2D2C00704668 /* VideoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoStore.swift; sourceTree = "<group>"; };
+		C0E80B961D2FCECC005A8417 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C0F3D4461D2A7E01009BCC5A /* REAUCMTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = REAUCMTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F3D4491D2A7E02009BCC5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0F3D44B1D2A7E02009BCC5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,6 +43,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C028A7F91D2E63B20014C810 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				C0E80B961D2FCECC005A8417 /* SwiftyJSON.swift */,
+			);
+			name = JSON;
+			sourceTree = "<group>";
+		};
+		C028A7FC1D2E69490014C810 /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+				C06CABBB1D2D2D2C00704668 /* VideoStore.swift */,
+				C028A7FF1D2E6CE30014C810 /* Rea.swift */,
+				C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */,
+				C028A7FA1D2E63DE0014C810 /* Video.swift */,
+			);
+			name = Modelo;
+			sourceTree = "<group>";
+		};
 		C0F3D43D1D2A7E01009BCC5A = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +81,8 @@
 		C0F3D4481D2A7E02009BCC5A /* REAUCMTV */ = {
 			isa = PBXGroup;
 			children = (
+				C028A7FC1D2E69490014C810 /* Modelo */,
+				C028A7F91D2E63B20014C810 /* JSON */,
 				C0F3D4491D2A7E02009BCC5A /* AppDelegate.swift */,
 				C0F3D44B1D2A7E02009BCC5A /* ViewController.swift */,
 				C0F3D44D1D2A7E02009BCC5A /* Main.storyboard */,
@@ -131,8 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C028A7FE1D2E696B0014C810 /* UnidadDidactiva.swift in Sources */,
 				C0F3D44C1D2A7E02009BCC5A /* ViewController.swift in Sources */,
 				C0F3D44A1D2A7E02009BCC5A /* AppDelegate.swift in Sources */,
+				C06CABBC1D2D2D2C00704668 /* VideoStore.swift in Sources */,
+				C028A8001D2E6CE30014C810 /* Rea.swift in Sources */,
+				C0E80B971D2FCECC005A8417 /* SwiftyJSON.swift in Sources */,
+				C028A7FB1D2E63DE0014C810 /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +312,7 @@
 				C0F3D4571D2A7E02009BCC5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

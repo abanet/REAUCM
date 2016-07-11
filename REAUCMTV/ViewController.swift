@@ -9,10 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController {
+  
+  var videoStore: VideoStore!
 
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    
+    videoStore.leerDatosRea()
+    print("datos leídos")
   }
 
   override func didReceiveMemoryWarning() {

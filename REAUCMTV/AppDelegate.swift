@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
+    
+    // Creación de los datos REA
+    let rootViewController = window!.rootViewController as! ViewController
+    let reaViewController = rootViewController
+    reaViewController.videoStore = VideoStore()
     return true
   }
 
