@@ -20,6 +20,7 @@ class Video {
   var type: String!
   var identifierIOS: String! // url para ios
   
+  
   init(fromJson json: JSON!){
     guard json != nil else {
       return

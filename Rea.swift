@@ -6,7 +6,7 @@
 //  Copyright © 2016 UCM. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 class Rea {
@@ -18,6 +18,8 @@ class Rea {
   var contributor: String!
   var type: String!
   var unidades: [UnidadDidactica]!
+  var fotoLarga: Photo?
+  var fotoSeleccion: Photo?
   
   init(fromJson json: JSON!) {
     guard json != nil else {
@@ -37,6 +39,9 @@ class Rea {
       let unaUnidad = UnidadDidactica(fromJson: unidadJson)
       unidades.append(unaUnidad)
     }
+    
+    fotoLarga = Photo(photoID: ucIdentifier + ".png", remoteURL: NSURL(string: reaAPI.baseURLImagenes + "\(ucIdentifier).png")!)
+    fotoSeleccion = Photo(photoID: ucIdentifier + "_2.png", remoteURL: NSURL(string: reaAPI.baseURLImagenes + "\(ucIdentifier)_2.png")!)
     
   }
 }

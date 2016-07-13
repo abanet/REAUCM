@@ -12,12 +12,22 @@ import Foundation
 // Clase de comunicación con las API de datos
 // Inicialmente no existirán API y se limitará a descargar los datos de un fichero json.
 
-import Foundation
+import UIKit
 
 struct reaAPI {
   static let baseURLStringVideos = "http://callejon.sim.ucm.es/vodREA/mp4:"
   static let finURLStringVideos  = "/playlist.m3u8"
   static let urlStringJson   = "http://apps.ucm.es/reaucmtv/datareaucmtv.json"
+  static let baseURLImagenes = "http://apps.ucm.es/reaucmtv/img/"
+}
+
+enum ImageResult {
+  case Success(UIImage)
+  case Failure(ErrorType)
+}
+
+enum ImageError: ErrorType {
+  case ImageCreationError
 }
 
 class VideoStore {
@@ -28,26 +38,17 @@ class VideoStore {
     return NSURLSession(configuration: config)
   }()
   
+  
   var videoStore: [Rea]!
   
   
-  
-  func leerDatosRea(){
+  func leerDatosRea(completion:([Rea]) -> Void){
+    
     let request = NSURLRequest(URL: NSURL(string:reaAPI.urlStringJson)!)
-    
-    
     let task = session.dataTaskWithRequest(request) {
       (data, response, error) -> Void in
       
       if let jsonData = data {
-        
-//        do {
-//          let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [.AllowFragments])
-//          print(jsonObject)
-//        }
-//        catch let error {
-//          print("Error al crear JSON: \(error)")
-//        }
         
         let json:JSON = JSON(data: jsonData)
         self.videoStore = [Rea]()
@@ -56,12 +57,14 @@ class VideoStore {
           let unRea = Rea(fromJson: reaJson)
           self.videoStore.append(unRea)
         }
+        dispatch_async(dispatch_get_main_queue()) {
+          completion(self.videoStore)
+        }
         
-//        if let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) {
-//          print(jsonString)
-//        }
+        print("Metadatos Rea leídos")
       } else if let requestError = error {
         print("Error leyendo json: \(requestError)")
+        
       } else {
         print("Error no esperado leyendo json")
       }

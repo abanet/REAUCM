@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     
     // Creación de los datos REA
-    let rootViewController = window!.rootViewController as! ViewController
+    let rootViewController = window!.rootViewController as! ReaViewController
     let reaViewController = rootViewController
-    reaViewController.videoStore = VideoStore()
+    reaViewController.almacenRea = VideoStore()
     return true
   }
 
