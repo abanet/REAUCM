@@ -12,6 +12,7 @@ class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectio
 
   var almacenRea: VideoStore!
   var listaRea = [Rea]()
+  private var indexReaSeleccionado = 0
   
   
   @IBOutlet var reaCollectionView: UICollectionView!
@@ -20,6 +21,7 @@ class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectio
   
   @IBOutlet var tituloReaLabel: UILabel!
   @IBOutlet var descripcionReaLabel: UILabel!
+  @IBOutlet var bannerImageView: UIImageView!
   
   
   
@@ -43,7 +45,22 @@ class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectio
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    print("holita")
     
+    if segue.identifier == "SegueDetalleRea" {
+      if let destinationViewController = segue.destinationViewController as? DetalleReaViewController {
+        // coger información de la celda y configurarla en el viewcontroller destino
+        destinationViewController.rea = listaRea[indexReaSeleccionado]
+        
+        //destinationViewController.unidades =
+      }
+    }
+  }
+
+  
 
 }
 
@@ -89,11 +106,33 @@ extension ReaViewController {
 // MARK: UICollectionViewDelegate
 extension ReaViewController {
   func collectionView(collectionView: UICollectionView, didUpdateFocusInContext context: UICollectionViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
-    let indice = context.nextFocusedIndexPath!
+    
+    guard let indice = context.nextFocusedIndexPath else { return }
+    
     let sectionRea = reaEnSeccion(indice.section)
     let rea = sectionRea[indice.item]
+    indexReaSeleccionado = indice.item  // actualizamos el índice del rea seleccionado para que esté disponible en el segue. De momento trabajamos con una sóla sección así que nos vale el indice.item.
+    
+    
     tituloReaLabel.text = rea.title
     descripcionReaLabel.text = rea.description
+    
+    rea.fotoLarga!.obtenerImagen {
+      (imageResult) -> Void in
+      switch imageResult {
+      case let . Success(image):
+        dispatch_async(dispatch_get_main_queue()) {
+          self.bannerImageView.image = image
+          self.bannerImageView.alpha = 0
+          UIView.animateWithDuration(1.0, animations: {
+            self.bannerImageView.alpha = 1.0
+          })
+        }
+        
+      case let .Failure(error):
+        print("Error descargando imagen: \(error)")
+      }
+    }
   }
 }
 

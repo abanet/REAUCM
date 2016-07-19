@@ -18,9 +18,10 @@ class Photo {
   let URLCache = NSURLCache(memoryCapacity: 20 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "ImageDownloadCache")
   
   init() {
+    // TODO: dejar caché para modo producción
     // Configuramos la caché
     let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-    config.requestCachePolicy = NSURLRequestCachePolicy.ReturnCacheDataElseLoad
+    config.requestCachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData //.ReturnCacheDataElseLoad
     session = NSURLSession(configuration: config)
 
   }
@@ -98,6 +99,7 @@ class Photo {
   
 }
 
+// No utilizado.
 extension UIImageView {
   func setImageFromPhoto(photo: Photo) {
     image = nil
