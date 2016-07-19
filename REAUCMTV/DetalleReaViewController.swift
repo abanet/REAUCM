@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import AVKit
 
 class DetalleReaViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   var rea: Rea!
   
+  // Variables para visualización del vídeo
+  var fullScreenPlayerViewController: AVPlayerViewController!
+  var asset: AVAsset!
+  var video: Video! {
+    didSet {
+      asset = AVAsset(URL: self.video.urlVideo)
+    }
+  }
+
   
+  // Outlets
   @IBOutlet var reaImageView: UIImageView!
   @IBOutlet var tituloReaLabel: UILabel!
   @IBOutlet var creatorLabel: UILabel!
@@ -69,6 +80,7 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     // Obtenemos el vídeo que estamos tratando
     let unidadDidactica = rea.unidades[indexPath.section]
     let video = unidadDidactica.videos[indexPath.row]
+    self.video = video // actualizamos la variable de clase para actualizar el asset.
 
     // Cargamos la imagen de la celda
     video.miniatura!.obtenerImagen {
@@ -111,6 +123,57 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       siguienteCelda.tituloVideoLabel.textColor = UIColor.blackColor()
     }
   }
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    // Obtenemos el vídeo que estamos tratando
+    let unidadDidactica = rea.unidades[indexPath.section]
+    let video = unidadDidactica.videos[indexPath.row]
+    
+    // actualizamos la variable de clase para actualizar el asset.
+    self.video = video
+    
+    self.reproducirVideo()
+  
+  }
+  
+  // MARK: Funciones de Video
+  
+  func reproducirVideo() {
+    print("Preparando para visualizar \(self.video.urlVideo)")
+    let playerItem = AVPlayerItem(asset: asset)
+    let fullScreenPlayer = AVPlayer(playerItem: playerItem)
+    fullScreenPlayerViewController = AVPlayerViewController()
+    fullScreenPlayerViewController!.player = fullScreenPlayer
+    presentViewController(fullScreenPlayerViewController, animated: true, completion: nil)
+  }
+
+  
+  private func getDatosVideo() {
+    asset.loadValuesAsynchronouslyForKeys(["duration"], completionHandler: {
+      [unowned self]() in
+      var error: NSError?
+      let status = self.asset.statusOfValueForKey("duration", error: &error)
+      if status != AVKeyValueStatus.Loaded {
+        print("No podemos acceder a la duración del vídeo")
+        if let error = error {
+          print("\(error)")
+        }
+        return
+      }
+      
+      let totalTiempoSegundos = CMTimeGetSeconds(self.asset.duration)
+      let tiempoEnMinutos = Int(totalTiempoSegundos / 60)
+      let tiempoEnSegundos = Int(totalTiempoSegundos % 60)
+      
+      dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        //print("Duración \(tiempoEnMinutos) minutos, \(tiempoEnSegundos)")
+        //self.lblDuracion.text = "Duración: \(tiempoEnMinutos)m, \(tiempoEnSegundos)s."
+      })
+      })
+  }
+  
+  
 }
 
 

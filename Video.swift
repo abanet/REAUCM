@@ -18,8 +18,9 @@ class Video {
   var title: String!
   var description: String!
   var type: String!
-  var identifierIOS: String! // url para ios
   var miniatura: Photo?
+  var urlVideo: NSURL!
+  var identifierIOS: String!   
   
   
   init(fromJson json: JSON!){
@@ -34,6 +35,8 @@ class Video {
     // Obtenemos la url para iOS
     let urlsRecurso = json["dc.identifier"].object
     identifierIOS = urlsRecurso["uc.ios"] as! String
+    
+    urlVideo = NSURL(string: reaAPI.baseURLStringVideos + identifierIOS + reaAPI.finURLStringVideos)
     
     // Establecemos la imagen miniatura
     miniatura = Photo(photoID: "miniatura_" + ucIdentifier + ".png", remoteURL: NSURL(string: reaAPI.baseURLImagenes + "miniatura_\(ucIdentifier).png")!)

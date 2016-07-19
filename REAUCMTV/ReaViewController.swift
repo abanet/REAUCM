@@ -48,7 +48,6 @@ class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectio
   
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    print("holita")
     
     if segue.identifier == "SegueDetalleRea" {
       if let destinationViewController = segue.destinationViewController as? DetalleReaViewController {
