@@ -156,7 +156,7 @@
                                     <constraint firstAttribute="height" constant="30" id="kJn-ke-qPV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.72941176470588232" green="0.20392156862745098" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label título que puede ser de largo com omáxom de dos líneas pq más ya sería excesivo." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cal-r9-3fH">
@@ -179,10 +179,10 @@
                                         <rect key="frame" x="0.0" y="54" width="950" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rnl-4D-8Hu" id="uYF-l1-AcK">
-                                            <rect key="frame" x="0.0" y="0.0" width="950" height="141"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="934" height="141"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OPT_semana_1BotonPlayRojo" translatesAutoresizingMaskIntoConstraints="NO" id="UYe-Z0-EH6">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BotonPlayRojoPorDefecto" translatesAutoresizingMaskIntoConstraints="NO" id="UYe-Z0-EH6">
                                                     <rect key="frame" x="0.0" y="0.0" width="250" height="141"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="ThB-aT-zxx"/>
@@ -214,14 +214,13 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dc.description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIC-XG-pvF">
-                                <rect key="frame" x="110" y="528" width="760" height="492"/>
+                                <rect key="frame" x="110" y="528" width="760" height="35"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="vIC-XG-pvF" firstAttribute="bottom" secondItem="UT0-qH-Vee" secondAttribute="bottom" id="2Mw-tT-raW"/>
                             <constraint firstItem="Uz1-ep-kN1" firstAttribute="top" secondItem="hoY-ps-Bpr" secondAttribute="bottom" constant="90" id="2gW-gs-9hH"/>
                             <constraint firstItem="cal-r9-3fH" firstAttribute="leading" secondItem="Uz1-ep-kN1" secondAttribute="trailing" constant="31" id="2iw-xu-MOQ"/>
                             <constraint firstAttribute="trailing" secondItem="FV8-ep-e1x" secondAttribute="trailing" id="8HI-Wc-jPc"/>
@@ -231,6 +230,7 @@
                             <constraint firstItem="jNy-0d-PVJ" firstAttribute="top" secondItem="Uz1-ep-kN1" secondAttribute="bottom" constant="33" id="JRg-8J-5fu"/>
                             <constraint firstItem="FV8-ep-e1x" firstAttribute="top" secondItem="hoY-ps-Bpr" secondAttribute="bottom" id="OeX-cb-91v"/>
                             <constraint firstItem="Uz1-ep-kN1" firstAttribute="leading" secondItem="qRa-OD-9Mk" secondAttribute="leadingMargin" constant="90" id="ROa-87-2Cu"/>
+                            <constraint firstItem="Gle-5a-f5n" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vIC-XG-pvF" secondAttribute="bottom" constant="60" id="RUl-I3-k3N"/>
                             <constraint firstItem="UT0-qH-Vee" firstAttribute="top" secondItem="cal-r9-3fH" secondAttribute="bottom" constant="30" id="S3v-WR-yHM"/>
                             <constraint firstAttribute="trailing" secondItem="UT0-qH-Vee" secondAttribute="trailing" constant="60" id="Tro-u4-mqC"/>
                             <constraint firstItem="Gle-5a-f5n" firstAttribute="top" secondItem="FV8-ep-e1x" secondAttribute="bottom" id="U9s-rS-Nfk"/>
@@ -256,7 +256,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="OPT_semana_1BotonPlayRojo" width="250" height="141"/>
+        <image name="BotonPlayRojoPorDefecto" width="250" height="141"/>
         <image name="background" width="1920" height="1080"/>
     </resources>
 </document>

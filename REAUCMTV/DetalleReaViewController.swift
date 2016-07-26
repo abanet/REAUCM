@@ -21,6 +21,7 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       asset = AVAsset(URL: self.video.urlVideo)
     }
   }
+  
 
   
   // Outlets
@@ -44,7 +45,9 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     
     tituloReaLabel.text = rea.title
     creatorLabel.text = rea.creator
+    descripcionLabel.sizeToFit()
     descripcionLabel.text = rea.description
+    
     
     rea.fotoSeleccion!.obtenerImagen {
       (imageResult) -> Void in
@@ -60,6 +63,7 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       }
     }
   }
+  
   
   
   // MARK: UITableViewDataSource
@@ -143,11 +147,42 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     print("Preparando para visualizar \(self.video.urlVideo)")
     let playerItem = AVPlayerItem(asset: asset)
     let fullScreenPlayer = AVPlayer(playerItem: playerItem)
+    
+    // obtenemos el total en segundos
+    self.getDatosVideo()
+   
+    
     fullScreenPlayerViewController = AVPlayerViewController()
+    fullScreenPlayerViewController.showsPlaybackControls = true
+    fullScreenPlayerViewController.requiresLinearPlayback = false
     fullScreenPlayerViewController!.player = fullScreenPlayer
+    
+    // Observamos el ratio. Ratio = 0 implica una pausa o stop.
+    fullScreenPlayerViewController.player!.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.New, context: nil)
+    
+    //fullScreenPlayerViewController!.player?.seekToTime(kCMTimeZero)
+    fullScreenPlayerViewController!.player?.play()
     presentViewController(fullScreenPlayerViewController, animated: true, completion: nil)
   }
 
+  override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    if keyPath == "rate" {
+      if let rate = change?[NSKeyValueChangeNewKey] as? Float {
+        if rate == 0.0 {
+
+          self.video.tiempoTranscurridoVideoEnSegundos = self.fullScreenPlayerViewController.player!.currentTime().value % 3600 % 60
+          print("Se ha parado en el segundo: \(self.video.tiempoTranscurridoVideoEnSegundos)")
+          self.fullScreenPlayerViewController.player!.removeObserver(self, forKeyPath: "rate")
+        }
+        if rate == 1.0 {
+          print("normal playback")
+        }
+        if rate == -1.0 {
+          print("reverse playback")
+        }
+      }
+    }
+  }
   
   private func getDatosVideo() {
     asset.loadValuesAsynchronouslyForKeys(["duration"], completionHandler: {
@@ -163,9 +198,12 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       }
       
       let totalTiempoSegundos = CMTimeGetSeconds(self.asset.duration)
-      let tiempoEnMinutos = Int(totalTiempoSegundos / 60)
-      let tiempoEnSegundos = Int(totalTiempoSegundos % 60)
       
+      let tiempoEnSegundos = Int64(totalTiempoSegundos % 60 % 3600)
+     
+      self.video.tiempoTotalVideoEnSegundos = tiempoEnSegundos
+      
+      // Actualización de la interfaz caso de queramos mostrar el tiempo total en pantalla.
       dispatch_async(dispatch_get_main_queue(), { () -> Void in
         //print("Duración \(tiempoEnMinutos) minutos, \(tiempoEnSegundos)")
         //self.lblDuracion.text = "Duración: \(tiempoEnMinutos)m, \(tiempoEnSegundos)s."

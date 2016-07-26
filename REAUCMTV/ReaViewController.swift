@@ -28,6 +28,11 @@ class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
       
+      // Limpiamos los label que vienen con información del storyboard
+      tituloReaLabel.text = ""
+      descripcionReaLabel.text = ""
+      bannerImageView.image = nil
+      
       // Asignación de datasource y delegate
       reaCollectionView.dataSource = self
       reaCollectionView.delegate = self
@@ -104,6 +109,8 @@ extension ReaViewController {
 
 // MARK: UICollectionViewDelegate
 extension ReaViewController {
+  
+  
   func collectionView(collectionView: UICollectionView, didUpdateFocusInContext context: UICollectionViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
     
     guard let indice = context.nextFocusedIndexPath else { return }

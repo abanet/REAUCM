@@ -17,6 +17,7 @@ class Photo {
   let session: NSURLSession?
   let URLCache = NSURLCache(memoryCapacity: 20 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "ImageDownloadCache")
   
+  
   init() {
     // TODO: dejar caché para modo producción
     // Configuramos la caché

@@ -22,6 +22,7 @@ class Rea {
   var fotoSeleccion: Photo?
   
   init(fromJson json: JSON!) {
+    
     guard json != nil else {
       return
     }
