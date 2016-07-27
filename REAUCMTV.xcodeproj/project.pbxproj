@@ -16,6 +16,7 @@
 		C06CABBC1D2D2D2C00704668 /* VideoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06CABBB1D2D2D2C00704668 /* VideoStore.swift */; };
 		C0789F221D3CF3B00017E6D5 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0789F211D3CF3B00017E6D5 /* VideoTableViewCell.swift */; };
 		C0A4E9ED1D366CAD00A098E7 /* DetalleReaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A4E9EC1D366CAD00A098E7 /* DetalleReaViewController.swift */; };
+		C0B7FDAB1D48AA9D00B8DD52 /* TiempoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B7FDAA1D48AA9D00B8DD52 /* TiempoVideo.swift */; };
 		C0E80B971D2FCECC005A8417 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E80B961D2FCECC005A8417 /* SwiftyJSON.swift */; };
 		C0F3D44A1D2A7E02009BCC5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F3D4491D2A7E02009BCC5A /* AppDelegate.swift */; };
 		C0F3D44F1D2A7E02009BCC5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F3D44D1D2A7E02009BCC5A /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		C06CABBB1D2D2D2C00704668 /* VideoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoStore.swift; sourceTree = "<group>"; };
 		C0789F211D3CF3B00017E6D5 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		C0A4E9EC1D366CAD00A098E7 /* DetalleReaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleReaViewController.swift; sourceTree = "<group>"; };
+		C0B7FDAA1D48AA9D00B8DD52 /* TiempoVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TiempoVideo.swift; sourceTree = "<group>"; };
 		C0E80B961D2FCECC005A8417 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C0F3D4461D2A7E01009BCC5A /* REAUCMTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = REAUCMTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F3D4491D2A7E02009BCC5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				C03C702B1D33BB15002E583B /* Photo.swift */,
 				C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */,
 				C028A7FA1D2E63DE0014C810 /* Video.swift */,
+				C0B7FDAA1D48AA9D00B8DD52 /* TiempoVideo.swift */,
 			);
 			name = Modelo;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				C0F3D44A1D2A7E02009BCC5A /* AppDelegate.swift in Sources */,
 				C0A4E9ED1D366CAD00A098E7 /* DetalleReaViewController.swift in Sources */,
 				C06CABBC1D2D2D2C00704668 /* VideoStore.swift in Sources */,
+				C0B7FDAB1D48AA9D00B8DD52 /* TiempoVideo.swift in Sources */,
 				C028A8001D2E6CE30014C810 /* Rea.swift in Sources */,
 				C0E80B971D2FCECC005A8417 /* SwiftyJSON.swift in Sources */,
 				C028A7FB1D2E63DE0014C810 /* Video.swift in Sources */,

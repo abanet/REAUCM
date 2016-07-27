@@ -21,6 +21,15 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       asset = AVAsset(URL: self.video.urlVideo)
     }
   }
+  var tiempoTotalVideo: Float?
+  
+  var fileNSURL: NSURL {
+    let manager = NSFileManager.defaultManager()
+    let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
+    return url//.URLByAppendingPathComponent("tiempos").path!
+  }
+  
+  
   
 
   
@@ -150,7 +159,6 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     
     // obtenemos el total en segundos
     self.getDatosVideo()
-   
     
     fullScreenPlayerViewController = AVPlayerViewController()
     fullScreenPlayerViewController.showsPlaybackControls = true
@@ -170,8 +178,19 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       if let rate = change?[NSKeyValueChangeNewKey] as? Float {
         if rate == 0.0 {
 
-          self.video.tiempoTranscurridoVideoEnSegundos = self.fullScreenPlayerViewController.player!.currentTime().value % 3600 % 60
-          print("Se ha parado en el segundo: \(self.video.tiempoTranscurridoVideoEnSegundos)")
+          let tiempo =  Float(self.fullScreenPlayerViewController.player!.currentTime().value)
+          let escala =  Float(self.fullScreenPlayerViewController.player!.currentTime().timescale)
+          
+          self.video.tiempos!.duracion = tiempo / escala
+          
+          let tiemposDeEsteVideo = TiempoVideo(duracion: tiempo/escala, transcurrido: self.tiempoTotalVideo)
+          
+          if tiemposDeEsteVideo.tiemposAsignados() {
+            let url = fileNSURL.URLByAppendingPathComponent(self.video.ucIdentifier).path!
+            NSKeyedArchiver.archiveRootObject(tiemposDeEsteVideo, toFile: url)
+          }
+          
+          print("Se ha parado en el segundo: \(self.video.tiempos?.duracion)")
           self.fullScreenPlayerViewController.player!.removeObserver(self, forKeyPath: "rate")
         }
         if rate == 1.0 {
@@ -199,9 +218,10 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       
       let totalTiempoSegundos = CMTimeGetSeconds(self.asset.duration)
       
-      let tiempoEnSegundos = Int64(totalTiempoSegundos % 60 % 3600)
+      let tiempoEnSegundos = Float(totalTiempoSegundos)
+      print("Tiempo total del video: \(tiempoEnSegundos)")
      
-      self.video.tiempoTotalVideoEnSegundos = tiempoEnSegundos
+      self.tiempoTotalVideo = tiempoEnSegundos
       
       // Actualización de la interfaz caso de queramos mostrar el tiempo total en pantalla.
       dispatch_async(dispatch_get_main_queue(), { () -> Void in

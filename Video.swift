@@ -25,8 +25,7 @@ class Video {
   
   // Variables para mantener la duración total del vídeo y el tiempo que se ha visualizado ya.
   // Estas variables se guardarán en local y se utilizarán para dibujar la barra indicativa de posición de vídeo.
-  var tiempoTotalVideoEnSegundos: Int64?
-  var tiempoTranscurridoVideoEnSegundos: Int64?
+  var tiempos: TiempoVideo?
   
   
   init(fromJson json: JSON!){
@@ -44,9 +43,9 @@ class Video {
     
     urlVideo = NSURL(string: reaAPI.baseURLStringVideos + identifierIOS + reaAPI.finURLStringVideos)
     
+    
     // Establecemos la imagen miniatura
     miniatura = Photo(photoID: "miniatura_" + ucIdentifier + ".png", remoteURL: NSURL(string: reaAPI.baseURLImagenes + "miniatura_\(ucIdentifier).png")!)
   }
-  
   
 }
