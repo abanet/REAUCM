@@ -12,6 +12,7 @@ class VideoTableViewCell: UITableViewCell {
   
   @IBOutlet var miniaturaVideoImageView: UIImageView!
   @IBOutlet var tituloVideoLabel: UILabel!
-  
+  @IBOutlet var duracionView: DuracionView!
+  @IBOutlet var contenedorDuracionView: UIView!
   
 }

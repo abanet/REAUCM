@@ -29,7 +29,8 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     return url//.URLByAppendingPathComponent("tiempos").path!
   }
   
-  
+  // Variable para almacenar los tiempos de visionado de los vídeos
+  var videosTimes: [VideoTime]!
   
 
   
@@ -39,6 +40,7 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
   @IBOutlet var creatorLabel: UILabel!
   @IBOutlet var descripcionLabel: UILabel!
   @IBOutlet var indiceTableView: UITableView!
+  
 
   
   private let reuseIdentifier = "CellTablaVideos"
@@ -73,7 +75,9 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     }
   }
   
-  
+  override func viewWillAppear(animated: Bool) {
+    indiceTableView.reloadData()
+  }
   
   // MARK: UITableViewDataSource
   
@@ -95,6 +99,27 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     let video = unidadDidactica.videos[indexPath.row]
     self.video = video // actualizamos la variable de clase para actualizar el asset.
 
+    // Si hay información sobre la duración del vídeo la dibujamos en la celda
+    let url = fileNSURL.URLByAppendingPathComponent(self.video.ucIdentifier).path!
+    
+    let tiempoVideo = NSKeyedUnarchiver.unarchiveObjectWithFile(url) as? TiempoVideo
+    
+    if tiempoVideo != nil {
+      
+      let duracion = tiempoVideo!.duracion
+      let transcurrido = tiempoVideo!.transcurrido
+      let anchoMaximo = cell.contenedorDuracionView.frame.width
+      
+      let anchoTranscurrido = (Float(anchoMaximo) * transcurrido!) / duracion!
+      
+      cell.duracionView.frame = CGRectMake(cell.contenedorDuracionView.frame.origin.x, cell.contenedorDuracionView.frame.origin.y, CGFloat(anchoTranscurrido), cell.contenedorDuracionView.frame.height)
+      cell.duracionView.hidden = false
+      
+    }
+    else {
+      cell.duracionView.hidden = true
+    }
+    
     // Cargamos la imagen de la celda
     video.miniatura!.obtenerImagen {
       (imageResult) -> Void in
@@ -185,9 +210,10 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
           
           let tiemposDeEsteVideo = TiempoVideo(duracion: tiempo/escala, transcurrido: self.tiempoTotalVideo)
           
-          if tiemposDeEsteVideo.tiemposAsignados() {
+          if tiemposDeEsteVideo!.tiemposAsignados() {
             let url = fileNSURL.URLByAppendingPathComponent(self.video.ucIdentifier).path!
-            NSKeyedArchiver.archiveRootObject(tiemposDeEsteVideo, toFile: url)
+            NSKeyedArchiver.archiveRootObject(tiemposDeEsteVideo!, toFile: url)
+            print("url:\(url)")
           }
           
           print("Se ha parado en el segundo: \(self.video.tiempos?.duracion)")
@@ -231,6 +257,18 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       })
   }
   
+  
+  // MARK: grabación y carga de tiempos de visionado
+  func guardaVideosTimes() {
+    let guardadosOK = NSKeyedArchiver.archiveRootObject(videosTimes, toFile: VideoTime.ArchiveURL.path!)
+    if !guardadosOK {
+      print("Error grabando tiempos")
+    }
+  }
+  
+  func loadVideosTimes() -> [VideoTime]? {
+    return NSKeyedUnarchiver.unarchiveObjectWithFile(VideoTime.ArchiveURL.path!) as? [VideoTime]
+  }
   
 }
 

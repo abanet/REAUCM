@@ -18,16 +18,19 @@ class TiempoVideo: NSObject, NSCoding {
   var duracion: Float?
   var transcurrido: Float?
     
-  init(duracion: Float?, transcurrido: Float?) {
+  init?(duracion: Float?, transcurrido: Float?) {
     self.duracion = duracion
     self.transcurrido = transcurrido
+    super.init()
   }
   
-  required init?(coder aDecoder: NSCoder) {
-    super.init()
-    duracion = aDecoder.decodeFloatForKey(Keys.Duracion)
-    transcurrido = aDecoder.decodeFloatForKey(Keys.Transcurrido)
+  
+  required convenience init?(coder aDecoder: NSCoder) {
+    let miDuracion = aDecoder.decodeFloatForKey(Keys.Duracion)
+    let miTranscurrido = aDecoder.decodeFloatForKey(Keys.Transcurrido)
+    self.init(duracion: miDuracion, transcurrido: miTranscurrido)
   }
+  
   
   func encodeWithCoder(aCoder: NSCoder) {
     aCoder.encodeFloat(duracion!, forKey: Keys.Duracion)

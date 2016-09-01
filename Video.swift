@@ -46,6 +46,8 @@ class Video {
     
     // Establecemos la imagen miniatura
     miniatura = Photo(photoID: "miniatura_" + ucIdentifier + ".png", remoteURL: NSURL(string: reaAPI.baseURLImagenes + "miniatura_\(ucIdentifier).png")!)
+    
+    tiempos = TiempoVideo(duracion: 0.0, transcurrido: 0.0)
   }
   
 }

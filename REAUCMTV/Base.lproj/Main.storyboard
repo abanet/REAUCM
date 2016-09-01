@@ -195,18 +195,40 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lks-Xa-MXp">
+                                                    <rect key="frame" x="5" y="111" width="240" height="22"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="05N-m2-2t1"/>
+                                                        <constraint firstAttribute="width" constant="240" id="ZM4-VT-c1o"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2R-QR-ce5" customClass="DuracionView" customModule="REAUCMTV" customModuleProvider="target">
+                                                    <rect key="frame" x="5" y="111" width="240" height="22"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="URC-ea-hdA"/>
+                                                        <constraint firstAttribute="width" constant="240" id="p5O-Xa-fUE"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="z2R-QR-ce5" firstAttribute="top" secondItem="uYF-l1-AcK" secondAttribute="top" constant="111" id="BKu-uE-fBY"/>
                                                 <constraint firstItem="fEE-fn-iMP" firstAttribute="leading" secondItem="UYe-Z0-EH6" secondAttribute="trailing" constant="62" id="Dhd-kJ-yD0"/>
+                                                <constraint firstItem="lks-Xa-MXp" firstAttribute="leading" secondItem="uYF-l1-AcK" secondAttribute="leading" constant="5" id="NuH-IP-AxQ"/>
                                                 <constraint firstItem="UYe-Z0-EH6" firstAttribute="top" secondItem="uYF-l1-AcK" secondAttribute="top" id="PBS-qc-dCJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="fEE-fn-iMP" secondAttribute="trailing" constant="33" id="SMi-TX-bzB"/>
+                                                <constraint firstItem="z2R-QR-ce5" firstAttribute="leading" secondItem="uYF-l1-AcK" secondAttribute="leading" constant="5" id="cbo-aF-WI9"/>
                                                 <constraint firstAttribute="bottom" secondItem="UYe-Z0-EH6" secondAttribute="bottom" id="eum-fh-Z4T"/>
                                                 <constraint firstItem="fEE-fn-iMP" firstAttribute="centerY" secondItem="UYe-Z0-EH6" secondAttribute="centerY" id="jk7-Hk-2aX"/>
+                                                <constraint firstItem="lks-Xa-MXp" firstAttribute="top" secondItem="uYF-l1-AcK" secondAttribute="top" constant="111" id="k95-9K-8am"/>
                                                 <constraint firstItem="UYe-Z0-EH6" firstAttribute="leading" secondItem="uYF-l1-AcK" secondAttribute="leading" id="uxf-uN-f0z"/>
                                                 <constraint firstItem="fEE-fn-iMP" firstAttribute="top" secondItem="uYF-l1-AcK" secondAttribute="top" constant="16" id="xlR-Jo-t5u"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="contenedorDuracionView" destination="lks-Xa-MXp" id="mgV-yX-Piq"/>
+                                            <outlet property="duracionView" destination="z2R-QR-ce5" id="8bg-oK-ZhV"/>
                                             <outlet property="miniaturaVideoImageView" destination="UYe-Z0-EH6" id="xQg-3W-ZdN"/>
                                             <outlet property="tituloVideoLabel" destination="fEE-fn-iMP" id="UgF-L2-nGd"/>
                                         </connections>
