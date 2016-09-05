@@ -6,6 +6,8 @@
 //  Copyright © 2016 UCM. All rights reserved.
 //
 
+// CLASE NO UTILIZADA. SUSTITUÍDA POR VIDEOTIME.
+
 import UIKit
 
 class TiempoVideo: NSObject, NSCoding {

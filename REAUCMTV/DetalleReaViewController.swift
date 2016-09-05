@@ -9,6 +9,10 @@
 import UIKit
 import AVKit
 
+struct MyVariables {
+  static var idVideo = "000"
+}
+
 class DetalleReaViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   var rea: Rea!
@@ -21,16 +25,12 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       asset = AVAsset(URL: self.video.urlVideo)
     }
   }
-  var tiempoTotalVideo: Float?
+  var tiempoTotalVideo = Float(0.0)
   
-  var fileNSURL: NSURL {
-    let manager = NSFileManager.defaultManager()
-    let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! as NSURL
-    return url//.URLByAppendingPathComponent("tiempos").path!
-  }
+  
   
   // Variable para almacenar los tiempos de visionado de los vídeos
-  var videosTimes: [VideoTime]!
+  var videosTimes: [String:VideoTime]!
   
 
   
@@ -73,11 +73,24 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
         print("Error descargando imagen: \(error)")
       }
     }
+    
+  
   }
   
   override func viewWillAppear(animated: Bool) {
+    // cargamos los tiempos de vídeos
+    self.videosTimes = self.loadVideosTimes() // Optional. Puede que no existan y devuelva nil.
+    
+    imprimirVideosTimes()
+    
+    // recargamos los datos de la tabla
     indiceTableView.reloadData()
   }
+  
+  override func viewWillDisappear(animated: Bool) {
+    self.guardaVideosTimes()
+  }
+  
   
   // MARK: UITableViewDataSource
   
@@ -97,27 +110,35 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     // Obtenemos el vídeo que estamos tratando
     let unidadDidactica = rea.unidades[indexPath.section]
     let video = unidadDidactica.videos[indexPath.row]
+    
     self.video = video // actualizamos la variable de clase para actualizar el asset.
+    
+    print("CellForRowAtIndexPath: tratando vídeo \(self.video)")
 
     // Si hay información sobre la duración del vídeo la dibujamos en la celda
-    let url = fileNSURL.URLByAppendingPathComponent(self.video.ucIdentifier).path!
+    var tiempoVideo: VideoTime?
+    if let tiempos = videosTimes {
+      tiempoVideo = tiempos[MyVariables.idVideo]//tiempos[self.video.ucIdentifier]
+    } else {
+      tiempoVideo = VideoTime(ucIdentifier: MyVariables.idVideo, duracion: 0.0, transcurrido: 0.0)//VideoTime(ucIdentifier: self.video.ucIdentifier, duracion: 0.0, transcurrido: 0.0)
+    }
     
-    let tiempoVideo = NSKeyedUnarchiver.unarchiveObjectWithFile(url) as? TiempoVideo
+    print("Tiempo CELDA \(indexPath.row): duracion->\(tiempoVideo?.duracion), transcurrido->\(tiempoVideo?.transcurrido)")
     
-    if tiempoVideo != nil {
+    // Dibujar el % de tiempo visto
+    if tiempoVideo != nil && tiempoVideo!.duracion != 0.0 {
       
       let duracion = tiempoVideo!.duracion
       let transcurrido = tiempoVideo!.transcurrido
       let anchoMaximo = cell.contenedorDuracionView.frame.width
       
-      let anchoTranscurrido = (Float(anchoMaximo) * transcurrido!) / duracion!
+      let anchoTranscurrido = (Float(anchoMaximo) * transcurrido) / duracion
       
+      print("Datos para dibujar duración---> ancho: \(CGFloat(anchoTranscurrido)), altura:\(cell.contenedorDuracionView.frame.height)")
       cell.duracionView.frame = CGRectMake(cell.contenedorDuracionView.frame.origin.x, cell.contenedorDuracionView.frame.origin.y, CGFloat(anchoTranscurrido), cell.contenedorDuracionView.frame.height)
-      cell.duracionView.hidden = false
       
-    }
-    else {
-      cell.duracionView.hidden = true
+      
+      
     }
     
     // Cargamos la imagen de la celda
@@ -137,6 +158,7 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     cell.tituloVideoLabel.text = video.title
     
     return cell
+    
   }
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -169,7 +191,8 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     let video = unidadDidactica.videos[indexPath.row]
     
     // actualizamos la variable de clase para actualizar el asset.
-    self.video = video
+    self.video = video  //esto no se guarda
+    MyVariables.idVideo = video.ucIdentifier
     
     self.reproducirVideo()
   
@@ -208,16 +231,20 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
           
           self.video.tiempos!.duracion = tiempo / escala
           
-          let tiemposDeEsteVideo = TiempoVideo(duracion: tiempo/escala, transcurrido: self.tiempoTotalVideo)
+          let tiemposDeEsteVideo = VideoTime(ucIdentifier: MyVariables.idVideo, duracion: self.tiempoTotalVideo, transcurrido: tiempo/escala)//VideoTime(ucIdentifier: self.video.ucIdentifier, duracion: self.tiempoTotalVideo, transcurrido: tiempo/escala)
           
-          if tiemposDeEsteVideo!.tiemposAsignados() {
-            let url = fileNSURL.URLByAppendingPathComponent(self.video.ucIdentifier).path!
-            NSKeyedArchiver.archiveRootObject(tiemposDeEsteVideo!, toFile: url)
-            print("url:\(url)")
-          }
+          // guardamos el tiempo del video que se acaba de visionar
+          videosTimes[MyVariables.idVideo] = tiemposDeEsteVideo
+          print("Añadiendo entrada en diccionario para \(MyVariables.idVideo)")
+          //videosTimes[self.video.ucIdentifier] = tiemposDeEsteVideo
+          //print("Añadiendo entrada en diccionario para \(self.video.ucIdentifier)")
           
           print("Se ha parado en el segundo: \(self.video.tiempos?.duracion)")
           self.fullScreenPlayerViewController.player!.removeObserver(self, forKeyPath: "rate")
+          
+          // recargamos los datos de la tabla. 02-09-2016
+          indiceTableView.reloadData()
+
         }
         if rate == 1.0 {
           print("normal playback")
@@ -262,14 +289,29 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
   func guardaVideosTimes() {
     let guardadosOK = NSKeyedArchiver.archiveRootObject(videosTimes, toFile: VideoTime.ArchiveURL.path!)
     if !guardadosOK {
-      print("Error grabando tiempos")
+      print("Error grabando tiempos en \(VideoTime.ArchiveURL.path!)")
     }
   }
   
-  func loadVideosTimes() -> [VideoTime]? {
-    return NSKeyedUnarchiver.unarchiveObjectWithFile(VideoTime.ArchiveURL.path!) as? [VideoTime]
+  func loadVideosTimes() -> [String:VideoTime]? {
+    
+    if let dictVideosTimes = NSKeyedUnarchiver.unarchiveObjectWithFile(VideoTime.ArchiveURL.path!) as? [String:VideoTime] {
+      return dictVideosTimes
+    }
+    let tiempoVacio = VideoTime(ucIdentifier: "vacio", duracion: 0.0, transcurrido: 0.0)!
+    return ["vacio":tiempoVacio]
+    
+    
   }
   
+  // Función auxiliar. Imprime los tiempos de visionado.  var videosTimes: [String:VideoTime]!
+  func imprimirVideosTimes() {
+    print("--------- ini videoTimes-----")
+    for (key, value) in self.videosTimes {
+      print("\(key): \(value)")
+    }
+    print("--------- end videoTimes-----")
+  }
 }
 
 

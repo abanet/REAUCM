@@ -21,8 +21,8 @@ class VideoTime: NSObject, NSCoding {
   var transcurrido: Float
   
   // MARK: Archivo para almacenar el array de tiempos
-  static let DocumentsDirectorio = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-  static let ArchiveURL = DocumentsDirectorio.URLByAppendingPathComponent("VideosTimes")
+  static let DocumentsDirectorio = NSFileManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask).first!
+  static let ArchiveURL = DocumentsDirectorio.URLByAppendingPathComponent("videosTimes")
   
   // MARK: Types
   struct PropertyKey {
@@ -61,4 +61,12 @@ class VideoTime: NSObject, NSCoding {
     self.init(ucIdentifier: idVideo, duracion: duracionVideo, transcurrido: transcurridoVideo)
   }
   
+}
+
+
+// Personalizamos el protocolo CustomStringConvertible
+extension VideoTime {
+  override var description: String {
+    return "ucIdentifier: \(self.ucIdentifier) <-> duración: \(self.duracion) <-> transcurrido: \(self.transcurrido)"
+  }
 }

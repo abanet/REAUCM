@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -179,7 +179,7 @@
                                         <rect key="frame" x="0.0" y="54" width="950" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rnl-4D-8Hu" id="uYF-l1-AcK">
-                                            <rect key="frame" x="0.0" y="0.0" width="934" height="141"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="950" height="141"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BotonPlayRojoPorDefecto" translatesAutoresizingMaskIntoConstraints="NO" id="UYe-Z0-EH6">
@@ -197,28 +197,28 @@
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lks-Xa-MXp">
                                                     <rect key="frame" x="5" y="111" width="240" height="22"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.11721127438476875" green="1" blue="0.12480517223350673" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="05N-m2-2t1"/>
                                                         <constraint firstAttribute="width" constant="240" id="ZM4-VT-c1o"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2R-QR-ce5" customClass="DuracionView" customModule="REAUCMTV" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="111" width="240" height="22"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNF-vV-KKB">
+                                                    <rect key="frame" x="5" y="111" width="143" height="22"/>
+                                                    <color key="backgroundColor" red="0.13011354657501351" green="0.28146035526936353" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="22" id="URC-ea-hdA"/>
-                                                        <constraint firstAttribute="width" constant="240" id="p5O-Xa-fUE"/>
+                                                        <constraint firstAttribute="width" constant="143" id="8kx-G0-tUP"/>
+                                                        <constraint firstAttribute="height" constant="22" id="lrD-FS-w1z"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="z2R-QR-ce5" firstAttribute="top" secondItem="uYF-l1-AcK" secondAttribute="top" constant="111" id="BKu-uE-fBY"/>
+                                                <constraint firstItem="TNF-vV-KKB" firstAttribute="top" secondItem="uYF-l1-AcK" secondAttribute="top" constant="111" id="BqS-Wv-p4H"/>
                                                 <constraint firstItem="fEE-fn-iMP" firstAttribute="leading" secondItem="UYe-Z0-EH6" secondAttribute="trailing" constant="62" id="Dhd-kJ-yD0"/>
                                                 <constraint firstItem="lks-Xa-MXp" firstAttribute="leading" secondItem="uYF-l1-AcK" secondAttribute="leading" constant="5" id="NuH-IP-AxQ"/>
                                                 <constraint firstItem="UYe-Z0-EH6" firstAttribute="top" secondItem="uYF-l1-AcK" secondAttribute="top" id="PBS-qc-dCJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="fEE-fn-iMP" secondAttribute="trailing" constant="33" id="SMi-TX-bzB"/>
-                                                <constraint firstItem="z2R-QR-ce5" firstAttribute="leading" secondItem="uYF-l1-AcK" secondAttribute="leading" constant="5" id="cbo-aF-WI9"/>
+                                                <constraint firstItem="TNF-vV-KKB" firstAttribute="leading" secondItem="uYF-l1-AcK" secondAttribute="leading" constant="5" id="V8Z-89-M47"/>
                                                 <constraint firstAttribute="bottom" secondItem="UYe-Z0-EH6" secondAttribute="bottom" id="eum-fh-Z4T"/>
                                                 <constraint firstItem="fEE-fn-iMP" firstAttribute="centerY" secondItem="UYe-Z0-EH6" secondAttribute="centerY" id="jk7-Hk-2aX"/>
                                                 <constraint firstItem="lks-Xa-MXp" firstAttribute="top" secondItem="uYF-l1-AcK" secondAttribute="top" constant="111" id="k95-9K-8am"/>
@@ -228,7 +228,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contenedorDuracionView" destination="lks-Xa-MXp" id="mgV-yX-Piq"/>
-                                            <outlet property="duracionView" destination="z2R-QR-ce5" id="8bg-oK-ZhV"/>
+                                            <outlet property="duracionView" destination="TNF-vV-KKB" id="5Ox-k6-54T"/>
                                             <outlet property="miniaturaVideoImageView" destination="UYe-Z0-EH6" id="xQg-3W-ZdN"/>
                                             <outlet property="tituloVideoLabel" destination="fEE-fn-iMP" id="UgF-L2-nGd"/>
                                         </connections>

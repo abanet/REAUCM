@@ -14,15 +14,19 @@ enum ElementType {
   case MovingImage
 }
 
-class Video {
+class Video: NSObject {
   var ucIdentifier: String!
   var title: String!
-  var description: String!
+  var descripcion: String!
   var type: String!
   var miniatura: Photo?
   var urlVideo: NSURL!
   var identifierIOS: String!
   
+override var description: String {
+    return("Descripción de vídeo: uc.identifier:\(self.ucIdentifier) , dc.title:\(self.title)")
+  }
+
   // Variables para mantener la duración total del vídeo y el tiempo que se ha visualizado ya.
   // Estas variables se guardarán en local y se utilizarán para dibujar la barra indicativa de posición de vídeo.
   var tiempos: TiempoVideo?
@@ -34,7 +38,7 @@ class Video {
     }
     ucIdentifier  = json["uc.identifier"].stringValue
     title         = json["dc.title"].stringValue
-    description   = json["dc.description"].stringValue
+    descripcion   = json["dc.description"].stringValue
     type          = json["dc.type"].stringValue
     
     // Obtenemos la url para iOS
@@ -49,5 +53,7 @@ class Video {
     
     tiempos = TiempoVideo(duracion: 0.0, transcurrido: 0.0)
   }
+  
+  
   
 }
