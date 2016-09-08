@@ -28,6 +28,9 @@ class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
       
+      // Apuntamos estadística
+      GATracker.sharedInstance.screenView("PrimeraPantalla", customParameters: nil)
+      
       // Limpiamos los label que vienen con información del storyboard
       tituloReaLabel.text = ""
       descripcionReaLabel.text = ""
