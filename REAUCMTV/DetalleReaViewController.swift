@@ -11,6 +11,8 @@ import AVKit
 
 struct MyVariables {
   static var idVideo = "000"
+  static let keyTiempoTotal = "tiempo"
+  static let keyTranscurrido = "transcurrido"
 }
 
 class DetalleReaViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -25,10 +27,7 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       asset = AVAsset(URL: self.video.urlVideo)
     }
   }
-  var tiempoTotalVideo = Float(0.0)
-  
-  
-  
+
   // Variable para almacenar los tiempos de visionado de los vídeos
   var videosTimes: [String:VideoTime]!
   
@@ -48,8 +47,17 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
   
   override func viewDidLoad() {
     
+    for key in NSUserDefaults.standardUserDefaults().dictionaryRepresentation().keys {
+      print("->\(key)")
+    }
+    
     guard rea != nil else { return } // no vaya a ser...
     
+    // Inicialización AVPlayerViewController
+    fullScreenPlayerViewController = AVPlayerViewController()
+    fullScreenPlayerViewController.showsPlaybackControls = true
+    fullScreenPlayerViewController.requiresLinearPlayback = false
+
     // Delegato y datasource que alimentarán la tabla de índice.
     indiceTableView.delegate = self
     indiceTableView.dataSource = self
@@ -73,26 +81,27 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
         print("Error descargando imagen: \(error)")
       }
     }
-    
   
+    
   }
+  
   
   override func viewWillAppear(animated: Bool) {
     
     // Estadísticas:
     GATracker.sharedInstance.screenView("DetalleViewController", customParameters: nil)
     
-    // LUIS
-    // cargamos los tiempos de vídeos
-    self.videosTimes = self.loadVideosTimes() // Optional. Puede que no existan y devuelva nil.
-    self.imprimirVideosTimes()
+    print("viewWillAppear")
     
-    // recargamos los datos de la tabla
-    self.indiceTableView.reloadData()
-  }
-  
-  override func viewWillDisappear(animated: Bool) {
-    self.guardaVideosTimes()
+    // Si volvemos de ver un video
+    if let player = fullScreenPlayerViewController.player {
+      let tiempo =  Float(player.currentTime().value)
+      let escala =  Float(player.currentTime().timescale)
+      let transcurrido = tiempo/escala
+      print("Tiempo transcurrido recuperado en viewWillAppear para video \(MyVariables.idVideo): \(transcurrido)")
+      NSUserDefaults.standardUserDefaults().setFloat (transcurrido, forKey: MyVariables.keyTranscurrido + MyVariables.idVideo)
+      indiceTableView.reloadData()
+    }
   }
   
   
@@ -109,7 +118,6 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = indiceTableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! VideoTableViewCell
-    //print("Título de vídeo: \(rea.unidades[indexPath.section].videos[indexPath.row].title)")
     
     // Obtenemos el vídeo que estamos tratando
     let unidadDidactica = rea.unidades[indexPath.section]
@@ -117,42 +125,26 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     
     self.video = video // actualizamos la variable de clase para actualizar el asset.
     
-    //print("CellForRowAtIndexPath: tratando vídeo \(self.video)")
+    
+    // Cogemos los datos de tiempo del NSUserDefaults
+    let duracion = NSUserDefaults.standardUserDefaults().floatForKey(MyVariables.keyTiempoTotal + self.video.ucIdentifier)
+    let transcurrido = NSUserDefaults.standardUserDefaults().floatForKey(MyVariables.keyTranscurrido + self.video.ucIdentifier)
 
-    // Si hay información sobre la duración del vídeo la dibujamos en la celda
-    var tiempoVideo: VideoTime?
-    if let tiempos = videosTimes {
-      tiempoVideo = tiempos[MyVariables.idVideo]
-    } else if MyVariables.idVideo != "000" {
-      
-        
-    } else {
-      tiempoVideo = VideoTime(ucIdentifier: MyVariables.idVideo, duracion: 0.0, transcurrido: 0.0)//VideoTime(ucIdentifier: self.video.ucIdentifier, duracion: 0.0, transcurrido: 0.0)
-    }
-    
-    //print("Tiempo CELDA \(indexPath.row): duracion->\(tiempoVideo?.duracion), transcurrido->\(tiempoVideo?.transcurrido)")
-    
-    // Dibujar el % de tiempo visto
-    if tiempoVideo != nil && tiempoVideo!.duracion != 0.0 {
-      
-      let duracion = tiempoVideo!.duracion
-      let transcurrido = tiempoVideo!.transcurrido
+    if duracion != 0 && transcurrido != 0 {
+      // Existe un datos grabado
+      // Dibujar el % de tiempo visto
       let anchoMaximo = cell.contenedorDuracionView.frame.width
-      
       let anchoTranscurrido = (Float(anchoMaximo) * transcurrido) / duracion
       
-      //print("Datos para dibujar duración---> ancho: \(CGFloat(anchoTranscurrido)), altura:\(cell.contenedorDuracionView.frame.height)")
-      //cell.duracionView.frame = CGRectMake(cell.contenedorDuracionView.frame.origin.x, cell.contenedorDuracionView.frame.origin.y, CGFloat(anchoTranscurrido), cell.contenedorDuracionView.frame.height)
+      let vistaDuracion = UIView(frame:cell.contenedorDuracionView.frame)
+      vistaDuracion.frame.size.width = CGFloat(anchoTranscurrido)
+      vistaDuracion.backgroundColor = UIColor.redColor()
+      cell.contentView.addSubview(vistaDuracion)
       
-//      let vistaDuracion = UIView(frame:cell.duracionView.frame)
-//      vistaDuracion.frame.size.width = 50.0
-//      vistaDuracion.backgroundColor = UIColor.redColor()
-//      cell.duracionView.addSubview(vistaDuracion)
-      
-      cell.duracionView.backgroundColor = UIColor.redColor()
+      print("\(video.ucIdentifier): \(transcurrido) de \(duracion)")
       
     }
-    
+ 
     // Cargamos la imagen de la celda
     video.miniatura!.obtenerImagen {
       (imageResult) -> Void in
@@ -218,53 +210,38 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     let fullScreenPlayer = AVPlayer(playerItem: playerItem)
     
     // obtenemos el total en segundos
+    // TODO: Hacer sólo si este vídeo no tiene duracionTotal, en otro caso ya se ha leído y no es necesario.
     self.getDatosVideo()
     
-    fullScreenPlayerViewController = AVPlayerViewController()
-    fullScreenPlayerViewController.showsPlaybackControls = true
-    fullScreenPlayerViewController.requiresLinearPlayback = false
     fullScreenPlayerViewController!.player = fullScreenPlayer
-    
-    // Observamos el ratio. Ratio = 0 implica una pausa o stop.
-    fullScreenPlayerViewController.player!.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.New, context: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DetalleReaViewController.playerDidFinishPlaying(_:)),
+                                                     name: AVPlayerItemDidPlayToEndTimeNotification, object: fullScreenPlayerViewController!.player!.currentItem)
     
     //fullScreenPlayerViewController!.player?.seekToTime(kCMTimeZero)
+    let transcurrido = NSUserDefaults.standardUserDefaults().floatForKey(MyVariables.keyTranscurrido + self.video.ucIdentifier)
+    fullScreenPlayerViewController!.player?.currentItem?.seekToTime(CMTimeMakeWithSeconds(Float64(transcurrido-1.0),60000))
     fullScreenPlayerViewController!.player?.play()
     presentViewController(fullScreenPlayerViewController, animated: true, completion: nil)
   }
 
   
-  override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-    if keyPath == "rate" {
-      if let rate = change?[NSKeyValueChangeNewKey] as? Float {
-        if rate == 0.0 {
-
-          let tiempo =  Float(self.fullScreenPlayerViewController.player!.currentTime().value)
-          let escala =  Float(self.fullScreenPlayerViewController.player!.currentTime().timescale)
-          
-          
-          
-          let tiemposDeEsteVideo = VideoTime(ucIdentifier: MyVariables.idVideo, duracion: self.tiempoTotalVideo, transcurrido: tiempo/escala)//VideoTime(ucIdentifier: self.video.ucIdentifier, duracion: self.tiempoTotalVideo, transcurrido: tiempo/escala)
-          
-          // guardamos el tiempo del video que se acaba de visionar
-          videosTimes[MyVariables.idVideo] = tiemposDeEsteVideo
-          print("Añadiendo entrada en diccionario para \(MyVariables.idVideo)")
-          
-          self.fullScreenPlayerViewController.player!.removeObserver(self, forKeyPath: "rate")
-          
-          // recargamos los datos de la tabla. 02-09-2016
-          indiceTableView.reloadData()
-
-        }
-        if rate == 1.0 {
-          print("normal playback")
-        }
-        if rate == -1.0 {
-          print("reverse playback")
-        }
-      }
-    }
+  func playerDidFinishPlaying(note: NSNotification) {
+    print("Video Finished")
+    
+    // Reseteamos el seekTime para que la próxima vez empieza desde cero.
+    fullScreenPlayerViewController!.player?.seekToTime(kCMTimeZero)
+    NSUserDefaults.standardUserDefaults().setFloat (0.0, forKey: MyVariables.keyTranscurrido + MyVariables.idVideo)
+   
+    print("reseteado tiempo transcurrido a 0.0 para \(MyVariables.keyTranscurrido + MyVariables.idVideo)")
+    
+    // Eliminamos el viewController del vídeo
+    fullScreenPlayerViewController.dismissViewControllerAnimated(true, completion: nil)
   }
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath:"AVPlayerItemDidPlayToEndTimeNotification")
+  }
+  
   
   private func getDatosVideo() {
     asset.loadValuesAsynchronouslyForKeys(["duration"], completionHandler: {
@@ -282,9 +259,8 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       let totalTiempoSegundos = CMTimeGetSeconds(self.asset.duration)
       
       let tiempoEnSegundos = Float(totalTiempoSegundos)
-      print("Tiempo total del video: \(tiempoEnSegundos)")
-     
-      self.tiempoTotalVideo = tiempoEnSegundos
+      NSUserDefaults.standardUserDefaults().setFloat (tiempoEnSegundos, forKey: MyVariables.keyTiempoTotal + MyVariables.idVideo)
+      print("Tiempo total del video \(MyVariables.idVideo): \(tiempoEnSegundos)")
       
       // Actualización de la interfaz caso de queramos mostrar el tiempo total en pantalla.
       dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -294,35 +270,7 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       })
   }
   
-  
-  // MARK: grabación y carga de tiempos de visionado
-  func guardaVideosTimes() {
-    let guardadosOK = NSKeyedArchiver.archiveRootObject(videosTimes, toFile: VideoTime.ArchiveURL.path!)
-    if !guardadosOK {
-      print("Error grabando tiempos en \(VideoTime.ArchiveURL.path!)")
-    }
-  }
-  
-  // LUIS
-  func loadVideosTimes() -> [String:VideoTime]? {
-    var resultado: [String:VideoTime]?
-    
-    if let dictVideosTimes = NSKeyedUnarchiver.unarchiveObjectWithFile(VideoTime.ArchiveURL.path!) as? [String:VideoTime] {
-      return dictVideosTimes
-    }
-    let tiempoVacio = VideoTime(ucIdentifier: "vacio", duracion: 0.0, transcurrido: 0.0)!
-    return ["vacio":tiempoVacio]
 
-  }
-  
-  // Función auxiliar. Imprime los tiempos de visionado.  var videosTimes: [String:VideoTime]!
-  func imprimirVideosTimes() {
-    print("--------- ini videoTimes-----")
-    for (key, value) in self.videosTimes {
-      print("\(key): \(value)")
-    }
-    print("--------- end videoTimes-----")
-  }
 }
 
 

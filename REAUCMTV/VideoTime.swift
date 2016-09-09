@@ -13,7 +13,7 @@
 import UIKit
 
 // LUIS
-class VideoTime: NSObject, NSCoding {
+class VideoTime: NSObject {
   
   // MARK: Properties
   var ucIdentifier: String
@@ -43,22 +43,6 @@ class VideoTime: NSObject, NSCoding {
     if ucIdentifier.isEmpty {
       return nil
     }
-  }
-  
-  // MARK: Protocolo NSCoding
-  
-  func encodeWithCoder(aCoder: NSCoder) {
-    aCoder.encodeObject(ucIdentifier, forKey: PropertyKey.ucIdentifierKey)
-    aCoder.encodeFloat(duracion, forKey: PropertyKey.duracionKey)
-    aCoder.encodeFloat(transcurrido, forKey: PropertyKey.transcurridoKey)
-  }
-  
-  required convenience init?(coder aDecoder: NSCoder) {
-    let idVideo = aDecoder.decodeObjectForKey(PropertyKey.ucIdentifierKey) as! String
-    let duracionVideo = aDecoder.decodeFloatForKey(PropertyKey.duracionKey)
-    let transcurridoVideo = aDecoder.decodeFloatForKey(PropertyKey.transcurridoKey)
-    
-    self.init(ucIdentifier: idVideo, duracion: duracionVideo, transcurrido: transcurridoVideo)
   }
   
 }
