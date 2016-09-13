@@ -61,7 +61,7 @@ class VideoStore {
         dispatch_async(dispatch_get_main_queue()) {
           completion(self.videoStore)
         }
-        print("json: \(json)")
+        //print("json: \(json)")
         print("Metadatos Rea leídos")
       } else if let requestError = error {
         print("Error leyendo json: \(requestError)")

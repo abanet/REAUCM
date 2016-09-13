@@ -8,10 +8,17 @@
 
 import UIKit
 
+struct MyVariables {
+  static var idVideo = "000"
+  static let keyTiempoTotal = "tiempo"
+  static let keyTranscurrido = "transcurrido"
+}
+
 class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
   var almacenRea: VideoStore!
   var listaRea = [Rea]()
+  
   private var indexReaSeleccionado = 0
   
   
@@ -60,9 +67,11 @@ class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectio
     if segue.identifier == "SegueDetalleRea" {
       if let destinationViewController = segue.destinationViewController as? DetalleReaViewController {
         // coger información de la celda y configurarla en el viewcontroller destino
+        
+        // Alimentar tiempos de video del Rea seleccionado
+        destinationViewController.gestorTiempos = GestorTiempos(id: listaRea[indexReaSeleccionado].ucIdentifier)
         destinationViewController.rea = listaRea[indexReaSeleccionado]
         
-        //destinationViewController.unidades =
       }
     }
   }

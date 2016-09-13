@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C014F9E61D86AAA400DBCB48 /* GestorTiempos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */; };
 		C028A7FB1D2E63DE0014C810 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FA1D2E63DE0014C810 /* Video.swift */; };
 		C028A7FE1D2E696B0014C810 /* UnidadDidactiva.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */; };
 		C028A8001D2E6CE30014C810 /* Rea.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FF1D2E6CE30014C810 /* Rea.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		75BD0D6BBCE1C002C511BC0F /* Pods-REAUCMTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REAUCMTV.release.xcconfig"; path = "Pods/Target Support Files/Pods-REAUCMTV/Pods-REAUCMTV.release.xcconfig"; sourceTree = "<group>"; };
+		C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestorTiempos.swift; sourceTree = "<group>"; };
 		C028A7FA1D2E63DE0014C810 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = ../Video.swift; sourceTree = "<group>"; };
 		C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnidadDidactiva.swift; path = ../UnidadDidactiva.swift; sourceTree = "<group>"; };
 		C028A7FF1D2E6CE30014C810 /* Rea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Rea.swift; path = ../Rea.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */,
 				C028A7FA1D2E63DE0014C810 /* Video.swift */,
 				C0A46D931D78443E0043A797 /* VideoTime.swift */,
+				C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */,
 			);
 			name = Modelo;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C03C702C1D33BB15002E583B /* Photo.swift in Sources */,
+				C014F9E61D86AAA400DBCB48 /* GestorTiempos.swift in Sources */,
 				C042E4CB1D34FBED00E52819 /* ReaCollectionViewCell.swift in Sources */,
 				C028A7FE1D2E696B0014C810 /* UnidadDidactiva.swift in Sources */,
 				C0789F221D3CF3B00017E6D5 /* VideoTableViewCell.swift in Sources */,

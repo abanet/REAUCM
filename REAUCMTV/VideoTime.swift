@@ -19,11 +19,7 @@ class VideoTime: NSObject {
   var ucIdentifier: String
   var duracion: Float
   var transcurrido: Float
-  
-  // MARK: Archivo para almacenar el array de tiempos
-  static let DocumentsDirectorio = NSFileManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask).first!
-  static let ArchiveURL = DocumentsDirectorio.URLByAppendingPathComponent("videosTimes")
-  
+ 
   // MARK: Types
   struct PropertyKey {
     static let ucIdentifierKey = "ucIdentifier"
