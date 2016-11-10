@@ -41,8 +41,9 @@ class Rea {
       unidades.append(unaUnidad)
     }
     
-    fotoLarga = Photo(photoID: ucIdentifier + ".png", remoteURL: NSURL(string: reaAPI.baseURLImagenes + "\(ucIdentifier).png")!)
-    fotoSeleccion = Photo(photoID: ucIdentifier + "_2.png", remoteURL: NSURL(string: reaAPI.baseURLImagenes + "\(ucIdentifier)_2.png")!)
-    
+    if let identificador = ucIdentifier {
+    fotoLarga = Photo(photoID: identificador + ".png", remoteURL: URL(string: reaAPI.baseURLImagenes + "\(identificador).png")!)
+    fotoSeleccion = Photo(photoID: identificador + "_2.png", remoteURL: URL(string: reaAPI.baseURLImagenes + "\(identificador)_2.png")!)
+    }
   }
 }

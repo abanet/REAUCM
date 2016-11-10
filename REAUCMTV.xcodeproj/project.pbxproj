@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A09BA65F1DD1EE5D008CBB34 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09BA65E1DD1EE5D008CBB34 /* SwiftyJSON.swift */; };
+		A09BA6611DD1F151008CBB34 /* GATracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09BA6601DD1F151008CBB34 /* GATracker.swift */; };
 		C014F9E61D86AAA400DBCB48 /* GestorTiempos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */; };
 		C028A7FB1D2E63DE0014C810 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FA1D2E63DE0014C810 /* Video.swift */; };
 		C028A7FE1D2E696B0014C810 /* UnidadDidactiva.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */; };
 		C028A8001D2E6CE30014C810 /* Rea.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FF1D2E6CE30014C810 /* Rea.swift */; };
-		C03C31E81D80350200A9E501 /* GATracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C31E71D80350200A9E501 /* GATracker.swift */; };
 		C03C702A1D33B634002E583B /* ReaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C70291D33B634002E583B /* ReaViewController.swift */; };
 		C03C702C1D33BB15002E583B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C702B1D33BB15002E583B /* Photo.swift */; };
 		C042E4CB1D34FBED00E52819 /* ReaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042E4CA1D34FBED00E52819 /* ReaCollectionViewCell.swift */; };
@@ -19,7 +20,6 @@
 		C0789F221D3CF3B00017E6D5 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0789F211D3CF3B00017E6D5 /* VideoTableViewCell.swift */; };
 		C0A46D941D78443E0043A797 /* VideoTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A46D931D78443E0043A797 /* VideoTime.swift */; };
 		C0A4E9ED1D366CAD00A098E7 /* DetalleReaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A4E9EC1D366CAD00A098E7 /* DetalleReaViewController.swift */; };
-		C0E80B971D2FCECC005A8417 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E80B961D2FCECC005A8417 /* SwiftyJSON.swift */; };
 		C0F3D44A1D2A7E02009BCC5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F3D4491D2A7E02009BCC5A /* AppDelegate.swift */; };
 		C0F3D44F1D2A7E02009BCC5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F3D44D1D2A7E02009BCC5A /* Main.storyboard */; };
 		C0F3D4511D2A7E02009BCC5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F3D4501D2A7E02009BCC5A /* Assets.xcassets */; };
@@ -28,11 +28,12 @@
 
 /* Begin PBXFileReference section */
 		75BD0D6BBCE1C002C511BC0F /* Pods-REAUCMTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REAUCMTV.release.xcconfig"; path = "Pods/Target Support Files/Pods-REAUCMTV/Pods-REAUCMTV.release.xcconfig"; sourceTree = "<group>"; };
+		A09BA65E1DD1EE5D008CBB34 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		A09BA6601DD1F151008CBB34 /* GATracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GATracker.swift; sourceTree = "<group>"; };
 		C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestorTiempos.swift; sourceTree = "<group>"; };
 		C028A7FA1D2E63DE0014C810 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = ../Video.swift; sourceTree = "<group>"; };
 		C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnidadDidactiva.swift; path = ../UnidadDidactiva.swift; sourceTree = "<group>"; };
 		C028A7FF1D2E6CE30014C810 /* Rea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Rea.swift; path = ../Rea.swift; sourceTree = "<group>"; };
-		C03C31E71D80350200A9E501 /* GATracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GATracker.swift; sourceTree = "<group>"; };
 		C03C70291D33B634002E583B /* ReaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaViewController.swift; sourceTree = "<group>"; };
 		C03C702B1D33BB15002E583B /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		C042E4CA1D34FBED00E52819 /* ReaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		C0789F211D3CF3B00017E6D5 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		C0A46D931D78443E0043A797 /* VideoTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTime.swift; sourceTree = "<group>"; };
 		C0A4E9EC1D366CAD00A098E7 /* DetalleReaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleReaViewController.swift; sourceTree = "<group>"; };
-		C0E80B961D2FCECC005A8417 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C0F3D4461D2A7E01009BCC5A /* REAUCMTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = REAUCMTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F3D4491D2A7E02009BCC5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0F3D44E1D2A7E02009BCC5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		C028A7F91D2E63B20014C810 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				C0E80B961D2FCECC005A8417 /* SwiftyJSON.swift */,
+				A09BA65E1DD1EE5D008CBB34 /* SwiftyJSON.swift */,
 			);
 			name = JSON;
 			sourceTree = "<group>";
@@ -118,6 +118,14 @@
 			name = Vistas;
 			sourceTree = "<group>";
 		};
+		C083A92E1D8938BB00BD69FC /* Estadisticas */ = {
+			isa = PBXGroup;
+			children = (
+				A09BA6601DD1F151008CBB34 /* GATracker.swift */,
+			);
+			name = Estadisticas;
+			sourceTree = "<group>";
+		};
 		C0F3D43D1D2A7E01009BCC5A = {
 			isa = PBXGroup;
 			children = (
@@ -139,12 +147,12 @@
 		C0F3D4481D2A7E02009BCC5A /* REAUCMTV */ = {
 			isa = PBXGroup;
 			children = (
+				C083A92E1D8938BB00BD69FC /* Estadisticas */,
 				C042E4C91D34FBD100E52819 /* Vistas */,
 				C042E4C61D34E6C000E52819 /* Controllers */,
 				C028A7FC1D2E69490014C810 /* Modelo */,
 				C028A7F91D2E63B20014C810 /* JSON */,
 				C0F3D4491D2A7E02009BCC5A /* AppDelegate.swift */,
-				C03C31E71D80350200A9E501 /* GATracker.swift */,
 				C0F3D44D1D2A7E02009BCC5A /* Main.storyboard */,
 				C0F3D4501D2A7E02009BCC5A /* Assets.xcassets */,
 				C0F3D4521D2A7E02009BCC5A /* Info.plist */,
@@ -179,11 +187,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = UCM;
 				TargetAttributes = {
 					C0F3D4451D2A7E01009BCC5A = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = P883PD5GS6;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -225,16 +235,16 @@
 				C03C702C1D33BB15002E583B /* Photo.swift in Sources */,
 				C014F9E61D86AAA400DBCB48 /* GestorTiempos.swift in Sources */,
 				C042E4CB1D34FBED00E52819 /* ReaCollectionViewCell.swift in Sources */,
+				A09BA65F1DD1EE5D008CBB34 /* SwiftyJSON.swift in Sources */,
 				C028A7FE1D2E696B0014C810 /* UnidadDidactiva.swift in Sources */,
 				C0789F221D3CF3B00017E6D5 /* VideoTableViewCell.swift in Sources */,
+				A09BA6611DD1F151008CBB34 /* GATracker.swift in Sources */,
 				C03C702A1D33B634002E583B /* ReaViewController.swift in Sources */,
 				C0F3D44A1D2A7E02009BCC5A /* AppDelegate.swift in Sources */,
 				C0A4E9ED1D366CAD00A098E7 /* DetalleReaViewController.swift in Sources */,
 				C06CABBC1D2D2D2C00704668 /* VideoStore.swift in Sources */,
 				C028A8001D2E6CE30014C810 /* Rea.swift in Sources */,
 				C0F823A11D49F92600835928 /* DuracionView.swift in Sources */,
-				C03C31E81D80350200A9E501 /* GATracker.swift in Sources */,
-				C0E80B971D2FCECC005A8417 /* SwiftyJSON.swift in Sources */,
 				C0A46D941D78443E0043A797 /* VideoTime.swift in Sources */,
 				C028A7FB1D2E63DE0014C810 /* Video.swift in Sources */,
 			);
@@ -268,10 +278,13 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Universidad Complutense de Madrid (P883PD5GS6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -313,10 +326,13 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Universidad Complutense de Madrid (P883PD5GS6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -330,7 +346,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				VALIDATE_PRODUCT = YES;
@@ -343,10 +361,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = REAUCMTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.ucm.REAUCMTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
 		};
@@ -356,10 +379,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = REAUCMTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.ucm.REAUCMTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
 		};

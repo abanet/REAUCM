@@ -22,31 +22,31 @@ struct reaAPI {
 }
 
 enum ImageResult {
-  case Success(UIImage)
-  case Failure(ErrorType)
+  case success(UIImage)
+  case failure(Error)
 }
 
-enum ImageError: ErrorType {
-  case ImageCreationError
+enum ImageError: Error {
+  case imageCreationError
 }
 
 class VideoStore {
   
   
-  let session: NSURLSession = {
-    let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-    config.requestCachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData //.ReturnCacheDataElseLoad
-    return NSURLSession(configuration: config)
+  let session: URLSession = {
+    let config = URLSessionConfiguration.default
+    config.requestCachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData //.ReturnCacheDataElseLoad
+    return URLSession(configuration: config)
   }()
   
   
   var videoStore: [Rea]!
   
   
-  func leerDatosRea(completion:([Rea]) -> Void){
+  func leerDatosRea(_ completion:@escaping ([Rea]) -> Void){
     
-    let request = NSURLRequest(URL: NSURL(string:reaAPI.urlStringJson)!)
-    let task = session.dataTaskWithRequest(request) {
+    let request = URLRequest(url: URL(string:reaAPI.urlStringJson)!)
+    let task = session.dataTask(with: request, completionHandler: {
       (data, response, error) -> Void in
       
       if let jsonData = data {
@@ -58,7 +58,7 @@ class VideoStore {
           let unRea = Rea(fromJson: reaJson)
           self.videoStore.append(unRea)
         }
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
           completion(self.videoStore)
         }
         //print("json: \(json)")
@@ -69,7 +69,7 @@ class VideoStore {
       } else {
         print("Error no esperado leyendo json")
       }
-    }
+    }) 
     task.resume()
   }
   

@@ -11,90 +11,92 @@ import UIKit
 class Photo {
   static let shareInstance = Photo()
   
-  var remoteURL: NSURL?
+  var remoteURL: URL?
   var photoID: String?
   var image: UIImage?
-  let session: NSURLSession?
-  let URLCache = NSURLCache(memoryCapacity: 20 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "ImageDownloadCache")
+  let session: URLSession?
+  let URLCache = Foundation.URLCache(memoryCapacity: 20 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: "ImageDownloadCache")
   
   
   init() {
     // TODO: dejar caché para modo producción
     // Configuramos la caché
-    let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-    config.requestCachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData //.ReturnCacheDataElseLoad
-    session = NSURLSession(configuration: config)
+    let config = URLSessionConfiguration.default
+    config.requestCachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData //.ReturnCacheDataElseLoad
+    session = URLSession(configuration: config)
 
   }
   
-  convenience init(photoID: String, remoteURL: NSURL) {
+  convenience init(photoID: String, remoteURL: URL) {
+    print("photoID: \(photoID), remoteURL: \(remoteURL)")
     self.init()
     self.photoID = photoID
     self.remoteURL = remoteURL
+    print("URL imagen \(remoteURL)")
     self.obtenerImagen {
       (imageResult) -> Void in
       switch imageResult {
-        case let .Success(image):
+        case let .success(image):
           self.image = image
-        case let .Failure(error):
+        case let .failure(error):
           print("Error descargando imagen: \(error) desde \(remoteURL)")
       }
     }
   }
   
-  func obtenerImagen(completion: (ImageResult) -> Void) {
-    let request = NSURLRequest(URL: self.remoteURL!)
-    let task = session!.dataTaskWithRequest(request) {
+  func obtenerImagen(_ completion: @escaping (ImageResult) -> Void) {
+    let request = URLRequest(url: self.remoteURL!)
+    let task = session!.dataTask(with: request, completionHandler: {
       (data, response, error) -> Void in
-      let resultado = self.procesarImagen(data, error: error)
-      if case let .Success(image) = resultado {
+      let resultado = self.procesarImagen(data, error: error as NSError?)
+      if case let .success(image) = resultado {
         self.image = image
       }
       completion(resultado)
-    }
+    }) 
     
     task.resume()
   }
   
   
-  func procesarImagen(data: NSData?, error: NSError?) -> ImageResult {
+  func procesarImagen(_ data: Data?, error: NSError?) -> ImageResult {
     guard let
       imageData = data,
-      image = UIImage(data: imageData) else {
+      let image = UIImage(data: imageData) else {
         // No se ha podido crear la imagen con los datos recibidos
         if (data == nil) {
-          return .Failure(error!)
+          return .failure(error!)
         } else {
-          return .Failure(ImageError.ImageCreationError)
+          return .failure(ImageError.imageCreationError)
         }
     }
-    return .Success(image)
+    return .success(image)
   }
   
   
   // Obtiene una imagen de la foto correspondiente
-  func obtenerImagenDeFoto(completion: (UIImage?) -> Void) {
-    let request = NSURLRequest(URL: self.remoteURL!, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 30.0)
-    if let response = URLCache.cachedResponseForRequest(request) {
+  func obtenerImagenDeFoto(_ completion: @escaping (UIImage?) -> Void) {
+    let request = URLRequest(url: self.remoteURL!, cachePolicy: NSURLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: 30.0)
+    if let response = URLCache.cachedResponse(for: request) {
       let image = UIImage(data: response.data)
-      dispatch_async(dispatch_get_main_queue()) {
+      DispatchQueue.main.async {
         completion(image)
         return
       }
     }
     
-    session!.dataTaskWithRequest(request) {
-      (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-      guard let response = response, data = data else {
+    session!.dataTask(with: request, completionHandler: {
+      (data: Data?, response: URLResponse?, error: NSError?) -> Void in
+      guard let response = response, let data = data else {
         completion(nil)
         return
       }
-      Photo.shareInstance.URLCache.storeCachedResponse(NSCachedURLResponse(response:response, data:data, userInfo:nil, storagePolicy: .Allowed), forRequest: request)
+      Photo.shareInstance.URLCache.storeCachedResponse(CachedURLResponse(response:response, data:data, userInfo:nil, storagePolicy: .allowed), for: request)
       let downloadImage = UIImage(data: data)
-      dispatch_async(dispatch_get_main_queue()) {
+      DispatchQueue.main.async {
         completion(downloadImage)
       }
-    }.resume()
+    } as! (Data?, URLResponse?, Error?) -> Void) .resume()
     
   }
   
@@ -102,7 +104,7 @@ class Photo {
 
 // No utilizado.
 extension UIImageView {
-  func setImageFromPhoto(photo: Photo) {
+  func setImageFromPhoto(_ photo: Photo) {
     image = nil
     Photo.shareInstance.obtenerImagenDeFoto {
       image in

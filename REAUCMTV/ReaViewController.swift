@@ -8,22 +8,23 @@
 
 import UIKit
 
-struct MyVariables {
-  static var idVideo = "000"
-  static let keyTiempoTotal = "tiempo"
-  static let keyTranscurrido = "transcurrido"
-}
+//BARRASTIEMPO
+//struct MyVariables {
+//  static var idVideo = "000"
+//  static let keyTiempoTotal = "tiempo"
+//  static let keyTranscurrido = "transcurrido"
+//}
 
 class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
   var almacenRea: VideoStore!
   var listaRea = [Rea]()
   
-  private var indexReaSeleccionado = 0
+  fileprivate var indexReaSeleccionado = 0
   
   
   @IBOutlet var reaCollectionView: UICollectionView!
-  private let reuseIdentifier = "ReaCell"
+  fileprivate let reuseIdentifier = "ReaCell"
   
   
   @IBOutlet var tituloReaLabel: UILabel!
@@ -34,9 +35,6 @@ class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectio
   
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-      // Apuntamos estadística
-      GATracker.sharedInstance.screenView("PrimeraPantalla", customParameters: nil)
       
       // Limpiamos los label que vienen con información del storyboard
       tituloReaLabel.text = ""
@@ -62,38 +60,39 @@ class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectio
     }
   
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
     if segue.identifier == "SegueDetalleRea" {
-      if let destinationViewController = segue.destinationViewController as? DetalleReaViewController {
+      if let destinationViewController = segue.destination as? DetalleReaViewController {
         // coger información de la celda y configurarla en el viewcontroller destino
         
         // Alimentar tiempos de video del Rea seleccionado
-        destinationViewController.gestorTiempos = GestorTiempos(id: listaRea[indexReaSeleccionado].ucIdentifier)
+        
+        //BARRASTIEMPO
+        //destinationViewController.gestorTiempos = GestorTiempos(id: listaRea[indexReaSeleccionado].ucIdentifier)
+        
         destinationViewController.rea = listaRea[indexReaSeleccionado]
         
       }
     }
   }
 
-  
-
 }
 
 
 // MARK: UICollectionViewDataSource
 extension ReaViewController {
-  func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 1
   }
   
-  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     print("Número de rea: \(reaEnSeccion(section).count)")
     return reaEnSeccion(section).count
   }
   
-  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = reaCollectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ReaCollectionViewCell
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = reaCollectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ReaCollectionViewCell
     
     // Lo dejamos preparado para cuando haya varias secciones.
     let sectionRea = reaEnSeccion(indexPath.section)
@@ -102,12 +101,12 @@ extension ReaViewController {
     rea.fotoSeleccion!.obtenerImagen {
       (imageResult) -> Void in
       switch imageResult {
-      case let . Success(image):
-        dispatch_async(dispatch_get_main_queue()) {
+      case let . success(image):
+        DispatchQueue.main.async {
           cell.reaImageView.image = image
         }
           
-      case let .Failure(error):
+      case let .failure(error):
         print("Error descargando imagen: \(error)")
       }
     }
@@ -123,7 +122,7 @@ extension ReaViewController {
 extension ReaViewController {
   
   
-  func collectionView(collectionView: UICollectionView, didUpdateFocusInContext context: UICollectionViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+  func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
     
     guard let indice = context.nextFocusedIndexPath else { return }
     
@@ -138,16 +137,16 @@ extension ReaViewController {
     rea.fotoLarga!.obtenerImagen {
       (imageResult) -> Void in
       switch imageResult {
-      case let . Success(image):
-        dispatch_async(dispatch_get_main_queue()) {
+      case let . success(image):
+        DispatchQueue.main.async {
           self.bannerImageView.image = image
           self.bannerImageView.alpha = 0
-          UIView.animateWithDuration(1.0, animations: {
+          UIView.animate(withDuration: 1.0, animations: {
             self.bannerImageView.alpha = 1.0
           })
         }
         
-      case let .Failure(error):
+      case let .failure(error):
         print("Error descargando imagen: \(error)")
       }
     }
@@ -159,12 +158,12 @@ extension ReaViewController {
 extension ReaViewController: UICollectionViewDelegateFlowLayout {
   
   // Tamaño de las celdas
-  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: 550, height: 430)
   }
   
   // Espacio entre cabera de sección, celdas y pies
-  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
   }
 }
@@ -173,7 +172,7 @@ extension ReaViewController: UICollectionViewDelegateFlowLayout {
 // MARK: Métodos privados
 private extension ReaViewController {
   // Preparado para cuando haya diferentes secciones
-  func reaEnSeccion(seccion: Int) -> [Rea] {
+  func reaEnSeccion(_ seccion: Int) -> [Rea] {
     return self.listaRea
   }
 }

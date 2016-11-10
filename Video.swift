@@ -10,8 +10,8 @@ import Foundation
 import CoreMedia
 
 enum ElementType {
-  case Collection
-  case MovingImage
+  case collection
+  case movingImage
 }
 
 class Video: NSObject {
@@ -20,7 +20,7 @@ class Video: NSObject {
   var descripcion: String!
   var type: String!
   var miniatura: Photo?
-  var urlVideo: NSURL!
+  var urlVideo: URL!
   var identifierIOS: String!
   
 override var description: String {
@@ -37,17 +37,19 @@ override var description: String {
     type          = json["dc.type"].stringValue
     
     // Obtenemos la url para iOS
-    let urlsRecurso = json["dc.identifier"].object
-    identifierIOS = urlsRecurso["uc.ios"] as! String
+    // 08/11/2016
+    if let urlsRecurso = json["dc.identifier"].dictionary {
+        let url = urlsRecurso["uc.ios"]!.string
+        identifierIOS = url
+    }
     
-    urlVideo = NSURL(string: reaAPI.baseURLStringVideos + identifierIOS + reaAPI.finURLStringVideos)
+    urlVideo = URL(string: reaAPI.baseURLStringVideos + identifierIOS + reaAPI.finURLStringVideos)
     
     
     // Establecemos la imagen miniatura
-    miniatura = Photo(photoID: "miniatura_" + ucIdentifier + ".png", remoteURL: NSURL(string: reaAPI.baseURLImagenes + "miniatura_\(ucIdentifier).png")!)
-    
+    print("URL: \(reaAPI.baseURLImagenes)miniatura_\(ucIdentifier!)")
+    if let identificador = ucIdentifier {
+        miniatura = Photo(photoID: "miniatura_" + identificador + ".png", remoteURL: URL(string: reaAPI.baseURLImagenes + "miniatura_\(identificador).png")!)
   }
-  
-  
-  
+ }
 }

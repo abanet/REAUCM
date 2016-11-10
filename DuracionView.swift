@@ -12,7 +12,7 @@ import UIKit
 class DuracionView: UIView {
 
   
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
       
       //// Color Declarations
       let color2 = UIColor(red: 0.739, green: 0.301, blue: 0.301, alpha: 0.7)
