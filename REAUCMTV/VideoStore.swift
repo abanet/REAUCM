@@ -44,22 +44,23 @@ class VideoStore {
   
   
   func leerDatosRea(_ completion:@escaping ([Rea]) -> Void){
-    
     let request = URLRequest(url: URL(string:reaAPI.urlStringJson)!)
     let task = session.dataTask(with: request, completionHandler: {
-      (data, response, error) -> Void in
+      [weak self] (data, response, error) -> Void in
       
       if let jsonData = data {
         
         let json:JSON = JSON(data: jsonData)
-        self.videoStore = [Rea]()
+        self?.videoStore = [Rea]()
         let reaArray = json["reaucmtv"].arrayValue
         for reaJson in reaArray {
           let unRea = Rea(fromJson: reaJson)
-          self.videoStore.append(unRea)
+          self?.videoStore.append(unRea)
         }
         DispatchQueue.main.async {
-          completion(self.videoStore)
+          if let videos = self?.videoStore {
+            completion(videos)
+          }
         }
         //print("json: \(json)")
         print("Metadatos Rea leídos")

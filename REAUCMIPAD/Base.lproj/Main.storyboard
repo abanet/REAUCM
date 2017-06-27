@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Rea Ipad View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ReaIpadViewController" customModule="REAUCMIPAD" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="cdV-cq-vE9">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cCj-4o-eIJ">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="272"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="272" id="8Zd-ha-ttW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Titulo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keZ-AQ-Dgx">
+                                <rect key="frame" x="20" y="28" width="984" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Descripción" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83p-kg-0oM">
+                                <rect key="frame" x="20" y="74" width="984" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cCj-4o-eIJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6fI-kb-TaE"/>
+                            <constraint firstItem="cdV-cq-vE9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="AcH-gG-Obf"/>
+                            <constraint firstAttribute="trailing" secondItem="cCj-4o-eIJ" secondAttribute="trailing" id="OF6-5K-qbt"/>
+                            <constraint firstAttribute="trailing" secondItem="cdV-cq-vE9" secondAttribute="trailing" id="PXy-5n-g44"/>
+                            <constraint firstItem="cdV-cq-vE9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="b0r-SA-OyC"/>
+                            <constraint firstItem="cCj-4o-eIJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="fxL-b4-F4c"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cdV-cq-vE9" secondAttribute="bottom" id="xqi-HG-sNB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bannerView" destination="cCj-4o-eIJ" id="pFo-oY-Swu"/>
+                        <outlet property="lblDescripcion" destination="83p-kg-0oM" id="yFI-cc-3QI"/>
+                        <outlet property="lblTitle" destination="keZ-AQ-Dgx" id="RpA-wb-0Hx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="33.984375" y="39.84375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="1920" height="1080"/>
+    </resources>
+</document>

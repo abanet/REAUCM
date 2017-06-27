@@ -16,6 +16,20 @@
 		C03C702A1D33B634002E583B /* ReaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C70291D33B634002E583B /* ReaViewController.swift */; };
 		C03C702C1D33BB15002E583B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C702B1D33BB15002E583B /* Photo.swift */; };
 		C042E4CB1D34FBED00E52819 /* ReaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042E4CA1D34FBED00E52819 /* ReaCollectionViewCell.swift */; };
+		C0580C271F025A11001CAD73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0580C261F025A11001CAD73 /* AppDelegate.swift */; };
+		C0580C2C1F025A11001CAD73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0580C2A1F025A11001CAD73 /* Main.storyboard */; };
+		C0580C2E1F025A11001CAD73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0580C2D1F025A11001CAD73 /* Assets.xcassets */; };
+		C0580C311F025A11001CAD73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0580C2F1F025A11001CAD73 /* LaunchScreen.storyboard */; };
+		C0580C371F026365001CAD73 /* ReaIpadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0580C361F026365001CAD73 /* ReaIpadViewController.swift */; };
+		C0580C391F026A25001CAD73 /* VideoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06CABBB1D2D2D2C00704668 /* VideoStore.swift */; };
+		C0580C3A1F026A25001CAD73 /* Rea.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FF1D2E6CE30014C810 /* Rea.swift */; };
+		C0580C3B1F026A25001CAD73 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C702B1D33BB15002E583B /* Photo.swift */; };
+		C0580C3C1F026A25001CAD73 /* UnidadDidactiva.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */; };
+		C0580C3D1F026A25001CAD73 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FA1D2E63DE0014C810 /* Video.swift */; };
+		C0580C3E1F026A25001CAD73 /* VideoTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A46D931D78443E0043A797 /* VideoTime.swift */; };
+		C0580C3F1F026A25001CAD73 /* GestorTiempos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */; };
+		C0580C401F026A2C001CAD73 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09BA65E1DD1EE5D008CBB34 /* SwiftyJSON.swift */; };
+		C0580C411F027190001CAD73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F3D4501D2A7E02009BCC5A /* Assets.xcassets */; };
 		C06CABBC1D2D2D2C00704668 /* VideoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06CABBB1D2D2D2C00704668 /* VideoStore.swift */; };
 		C0789F221D3CF3B00017E6D5 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0789F211D3CF3B00017E6D5 /* VideoTableViewCell.swift */; };
 		C0A46D941D78443E0043A797 /* VideoTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A46D931D78443E0043A797 /* VideoTime.swift */; };
@@ -37,6 +51,13 @@
 		C03C70291D33B634002E583B /* ReaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaViewController.swift; sourceTree = "<group>"; };
 		C03C702B1D33BB15002E583B /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		C042E4CA1D34FBED00E52819 /* ReaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaCollectionViewCell.swift; sourceTree = "<group>"; };
+		C0580C241F025A11001CAD73 /* REAUCMIPAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = REAUCMIPAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0580C261F025A11001CAD73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C0580C2B1F025A11001CAD73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C0580C2D1F025A11001CAD73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C0580C301F025A11001CAD73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C0580C321F025A11001CAD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0580C361F026365001CAD73 /* ReaIpadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaIpadViewController.swift; sourceTree = "<group>"; };
 		C06CABBB1D2D2D2C00704668 /* VideoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoStore.swift; sourceTree = "<group>"; };
 		C0789F211D3CF3B00017E6D5 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		C0A46D931D78443E0043A797 /* VideoTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTime.swift; sourceTree = "<group>"; };
@@ -51,6 +72,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C0580C211F025A11001CAD73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0F3D4431D2A7E01009BCC5A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -118,6 +146,19 @@
 			name = Vistas;
 			sourceTree = "<group>";
 		};
+		C0580C251F025A11001CAD73 /* REAUCMIPAD */ = {
+			isa = PBXGroup;
+			children = (
+				C0580C261F025A11001CAD73 /* AppDelegate.swift */,
+				C0580C2A1F025A11001CAD73 /* Main.storyboard */,
+				C0580C2D1F025A11001CAD73 /* Assets.xcassets */,
+				C0580C2F1F025A11001CAD73 /* LaunchScreen.storyboard */,
+				C0580C321F025A11001CAD73 /* Info.plist */,
+				C0580C361F026365001CAD73 /* ReaIpadViewController.swift */,
+			);
+			path = REAUCMIPAD;
+			sourceTree = "<group>";
+		};
 		C083A92E1D8938BB00BD69FC /* Estadisticas */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				C0F3D4481D2A7E02009BCC5A /* REAUCMTV */,
+				C0580C251F025A11001CAD73 /* REAUCMIPAD */,
 				C0F3D4471D2A7E01009BCC5A /* Products */,
 				B11FB4017D9E7B8D2BDB689F /* Pods */,
 				9C9841AB0C53DF444B55A6F8 /* Frameworks */,
@@ -140,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				C0F3D4461D2A7E01009BCC5A /* REAUCMTV.app */,
+				C0580C241F025A11001CAD73 /* REAUCMIPAD.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,6 +206,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C0580C231F025A11001CAD73 /* REAUCMIPAD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0580C351F025A11001CAD73 /* Build configuration list for PBXNativeTarget "REAUCMIPAD" */;
+			buildPhases = (
+				C0580C201F025A11001CAD73 /* Sources */,
+				C0580C211F025A11001CAD73 /* Frameworks */,
+				C0580C221F025A11001CAD73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = REAUCMIPAD;
+			productName = REAUCMIPAD;
+			productReference = C0580C241F025A11001CAD73 /* REAUCMIPAD.app */;
+			productType = "com.apple.product-type.application";
+		};
 		C0F3D4451D2A7E01009BCC5A /* REAUCMTV */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0F3D4551D2A7E02009BCC5A /* Build configuration list for PBXNativeTarget "REAUCMTV" */;
@@ -186,13 +246,18 @@
 		C0F3D43E1D2A7E01009BCC5A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = UCM;
 				TargetAttributes = {
+					C0580C231F025A11001CAD73 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = FLU98JG66T;
+						ProvisioningStyle = Automatic;
+					};
 					C0F3D4451D2A7E01009BCC5A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = P883PD5GS6;
+						DevelopmentTeam = FLU98JG66T;
 						LastSwiftMigration = 0810;
 					};
 				};
@@ -211,11 +276,23 @@
 			projectRoot = "";
 			targets = (
 				C0F3D4451D2A7E01009BCC5A /* REAUCMTV */,
+				C0580C231F025A11001CAD73 /* REAUCMIPAD */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C0580C221F025A11001CAD73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0580C311F025A11001CAD73 /* LaunchScreen.storyboard in Resources */,
+				C0580C2E1F025A11001CAD73 /* Assets.xcassets in Resources */,
+				C0580C411F027190001CAD73 /* Assets.xcassets in Resources */,
+				C0580C2C1F025A11001CAD73 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0F3D4441D2A7E01009BCC5A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,6 +305,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C0580C201F025A11001CAD73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0580C3B1F026A25001CAD73 /* Photo.swift in Sources */,
+				C0580C3F1F026A25001CAD73 /* GestorTiempos.swift in Sources */,
+				C0580C401F026A2C001CAD73 /* SwiftyJSON.swift in Sources */,
+				C0580C3C1F026A25001CAD73 /* UnidadDidactiva.swift in Sources */,
+				C0580C271F025A11001CAD73 /* AppDelegate.swift in Sources */,
+				C0580C3E1F026A25001CAD73 /* VideoTime.swift in Sources */,
+				C0580C371F026365001CAD73 /* ReaIpadViewController.swift in Sources */,
+				C0580C3D1F026A25001CAD73 /* Video.swift in Sources */,
+				C0580C391F026A25001CAD73 /* VideoStore.swift in Sources */,
+				C0580C3A1F026A25001CAD73 /* Rea.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0F3D4421D2A7E01009BCC5A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,6 +347,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		C0580C2A1F025A11001CAD73 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0580C2B1F025A11001CAD73 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C0580C2F1F025A11001CAD73 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0580C301F025A11001CAD73 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		C0F3D44D1D2A7E02009BCC5A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -264,6 +374,43 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C0580C331F025A11001CAD73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FLU98JG66T;
+				INFOPLIST_FILE = REAUCMIPAD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = es.ucm.REAUCMIPAD;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C0580C341F025A11001CAD73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FLU98JG66T;
+				INFOPLIST_FILE = REAUCMIPAD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = es.ucm.REAUCMIPAD;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
 		C0F3D4531D2A7E02009BCC5A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -363,6 +510,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FLU98JG66T;
 				INFOPLIST_FILE = REAUCMTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.ucm.REAUCMTV;
@@ -381,6 +529,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FLU98JG66T;
 				INFOPLIST_FILE = REAUCMTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.ucm.REAUCMTV;
@@ -394,6 +543,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C0580C351F025A11001CAD73 /* Build configuration list for PBXNativeTarget "REAUCMIPAD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0580C331F025A11001CAD73 /* Debug */,
+				C0580C341F025A11001CAD73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C0F3D4411D2A7E01009BCC5A /* Build configuration list for PBXProject "REAUCMTV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -47,13 +47,14 @@ class Photo {
   func obtenerImagen(_ completion: @escaping (ImageResult) -> Void) {
     let request = URLRequest(url: self.remoteURL!)
     let task = session!.dataTask(with: request, completionHandler: {
-      (data, response, error) -> Void in
-      let resultado = self.procesarImagen(data, error: error as NSError?)
-      if case let .success(image) = resultado {
-        self.image = image
-      }
+      [weak self] (data, response, error) -> Void in
+      if let resultado = self?.procesarImagen(data, error: error as NSError?) {
+        if case let .success(image) = resultado {
+          self?.image = image
+        }
       completion(resultado)
-    }) 
+      }
+    })
     
     task.resume()
   }
