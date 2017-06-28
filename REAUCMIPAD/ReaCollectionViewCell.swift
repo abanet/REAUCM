@@ -9,5 +9,10 @@
 import UIKit
 
 class ReaCollectionViewCell: UICollectionViewCell {
-    
+  
+  
+  @IBOutlet var reaImageView: UIImageView!
+  @IBOutlet var lblTitle: UILabel!
+  
+  
 }

@@ -10,6 +10,10 @@ import UIKit
 
 class CapituloTableViewCell: UITableViewCell {
 
+  @IBOutlet var capituloImageView: UIImageView!
+  @IBOutlet var lblCapituloTitle: UILabel!
+  
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

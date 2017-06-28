@@ -28,11 +28,11 @@ class Photo {
   }
   
   convenience init(photoID: String, remoteURL: URL) {
-    print("photoID: \(photoID), remoteURL: \(remoteURL)")
+    //print("photoID: \(photoID), remoteURL: \(remoteURL)")
     self.init()
     self.photoID = photoID
     self.remoteURL = remoteURL
-    print("URL imagen \(remoteURL)")
+    //print("URL imagen \(remoteURL)")
     self.obtenerImagen {
       (imageResult) -> Void in
       switch imageResult {

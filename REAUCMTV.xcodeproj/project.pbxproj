@@ -29,11 +29,13 @@
 		C0580C3E1F026A25001CAD73 /* VideoTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A46D931D78443E0043A797 /* VideoTime.swift */; };
 		C0580C3F1F026A25001CAD73 /* GestorTiempos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */; };
 		C0580C401F026A2C001CAD73 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09BA65E1DD1EE5D008CBB34 /* SwiftyJSON.swift */; };
-		C0580C411F027190001CAD73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F3D4501D2A7E02009BCC5A /* Assets.xcassets */; };
 		C06CABBC1D2D2D2C00704668 /* VideoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06CABBB1D2D2D2C00704668 /* VideoStore.swift */; };
 		C0789F221D3CF3B00017E6D5 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0789F211D3CF3B00017E6D5 /* VideoTableViewCell.swift */; };
+		C08D9F2B1F03ABFA0074037A /* ReaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08D9F2A1F03ABFA0074037A /* ReaCollectionViewCell.swift */; };
+		C09ED2E91F03B548000937B5 /* DetalleIpadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09ED2E81F03B548000937B5 /* DetalleIpadViewController.swift */; };
 		C0A46D941D78443E0043A797 /* VideoTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A46D931D78443E0043A797 /* VideoTime.swift */; };
 		C0A4E9ED1D366CAD00A098E7 /* DetalleReaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A4E9EC1D366CAD00A098E7 /* DetalleReaViewController.swift */; };
+		C0C022CA1F03CA7B00EC5C02 /* CapituloTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C022C91F03CA7B00EC5C02 /* CapituloTableViewCell.swift */; };
 		C0F3D44A1D2A7E02009BCC5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F3D4491D2A7E02009BCC5A /* AppDelegate.swift */; };
 		C0F3D44F1D2A7E02009BCC5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F3D44D1D2A7E02009BCC5A /* Main.storyboard */; };
 		C0F3D4511D2A7E02009BCC5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F3D4501D2A7E02009BCC5A /* Assets.xcassets */; };
@@ -60,8 +62,11 @@
 		C0580C361F026365001CAD73 /* ReaIpadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaIpadViewController.swift; sourceTree = "<group>"; };
 		C06CABBB1D2D2D2C00704668 /* VideoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoStore.swift; sourceTree = "<group>"; };
 		C0789F211D3CF3B00017E6D5 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
+		C08D9F2A1F03ABFA0074037A /* ReaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaCollectionViewCell.swift; sourceTree = "<group>"; };
+		C09ED2E81F03B548000937B5 /* DetalleIpadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleIpadViewController.swift; sourceTree = "<group>"; };
 		C0A46D931D78443E0043A797 /* VideoTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTime.swift; sourceTree = "<group>"; };
 		C0A4E9EC1D366CAD00A098E7 /* DetalleReaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleReaViewController.swift; sourceTree = "<group>"; };
+		C0C022C91F03CA7B00EC5C02 /* CapituloTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapituloTableViewCell.swift; sourceTree = "<group>"; };
 		C0F3D4461D2A7E01009BCC5A /* REAUCMTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = REAUCMTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F3D4491D2A7E02009BCC5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0F3D44E1D2A7E02009BCC5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,6 +160,9 @@
 				C0580C2F1F025A11001CAD73 /* LaunchScreen.storyboard */,
 				C0580C321F025A11001CAD73 /* Info.plist */,
 				C0580C361F026365001CAD73 /* ReaIpadViewController.swift */,
+				C08D9F2A1F03ABFA0074037A /* ReaCollectionViewCell.swift */,
+				C09ED2E81F03B548000937B5 /* DetalleIpadViewController.swift */,
+				C0C022C91F03CA7B00EC5C02 /* CapituloTableViewCell.swift */,
 			);
 			path = REAUCMIPAD;
 			sourceTree = "<group>";
@@ -288,7 +296,6 @@
 			files = (
 				C0580C311F025A11001CAD73 /* LaunchScreen.storyboard in Resources */,
 				C0580C2E1F025A11001CAD73 /* Assets.xcassets in Resources */,
-				C0580C411F027190001CAD73 /* Assets.xcassets in Resources */,
 				C0580C2C1F025A11001CAD73 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +318,7 @@
 			files = (
 				C0580C3B1F026A25001CAD73 /* Photo.swift in Sources */,
 				C0580C3F1F026A25001CAD73 /* GestorTiempos.swift in Sources */,
+				C09ED2E91F03B548000937B5 /* DetalleIpadViewController.swift in Sources */,
 				C0580C401F026A2C001CAD73 /* SwiftyJSON.swift in Sources */,
 				C0580C3C1F026A25001CAD73 /* UnidadDidactiva.swift in Sources */,
 				C0580C271F025A11001CAD73 /* AppDelegate.swift in Sources */,
@@ -318,7 +326,9 @@
 				C0580C371F026365001CAD73 /* ReaIpadViewController.swift in Sources */,
 				C0580C3D1F026A25001CAD73 /* Video.swift in Sources */,
 				C0580C391F026A25001CAD73 /* VideoStore.swift in Sources */,
+				C08D9F2B1F03ABFA0074037A /* ReaCollectionViewCell.swift in Sources */,
 				C0580C3A1F026A25001CAD73 /* Rea.swift in Sources */,
+				C0C022CA1F03CA7B00EC5C02 /* CapituloTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +560,7 @@
 				C0580C341F025A11001CAD73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0F3D4411D2A7E01009BCC5A /* Build configuration list for PBXProject "REAUCMTV" */ = {
 			isa = XCConfigurationList;

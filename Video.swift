@@ -47,7 +47,7 @@ override var description: String {
     
     
     // Establecemos la imagen miniatura
-    print("URL: \(reaAPI.baseURLImagenes)miniatura_\(ucIdentifier!)")
+    //print("URL: \(reaAPI.baseURLImagenes)miniatura_\(ucIdentifier!)")
     if let identificador = ucIdentifier {
         miniatura = Photo(photoID: "miniatura_" + identificador + ".png", remoteURL: URL(string: reaAPI.baseURLImagenes + "miniatura_\(identificador).png")!)
   }
