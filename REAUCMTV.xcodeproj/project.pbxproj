@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A09BA65F1DD1EE5D008CBB34 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09BA65E1DD1EE5D008CBB34 /* SwiftyJSON.swift */; };
 		A09BA6611DD1F151008CBB34 /* GATracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09BA6601DD1F151008CBB34 /* GATracker.swift */; };
+		C00AC4911F068385000D2B0D /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00AC4901F068385000D2B0D /* ImageStore.swift */; };
+		C00AC4921F068385000D2B0D /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00AC4901F068385000D2B0D /* ImageStore.swift */; };
 		C014F9E61D86AAA400DBCB48 /* GestorTiempos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */; };
 		C028A7FB1D2E63DE0014C810 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FA1D2E63DE0014C810 /* Video.swift */; };
 		C028A7FE1D2E696B0014C810 /* UnidadDidactiva.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */; };
@@ -46,6 +48,7 @@
 		75BD0D6BBCE1C002C511BC0F /* Pods-REAUCMTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REAUCMTV.release.xcconfig"; path = "Pods/Target Support Files/Pods-REAUCMTV/Pods-REAUCMTV.release.xcconfig"; sourceTree = "<group>"; };
 		A09BA65E1DD1EE5D008CBB34 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		A09BA6601DD1F151008CBB34 /* GATracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GATracker.swift; sourceTree = "<group>"; };
+		C00AC4901F068385000D2B0D /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestorTiempos.swift; sourceTree = "<group>"; };
 		C028A7FA1D2E63DE0014C810 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = ../Video.swift; sourceTree = "<group>"; };
 		C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnidadDidactiva.swift; path = ../UnidadDidactiva.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 				C028A7FA1D2E63DE0014C810 /* Video.swift */,
 				C0A46D931D78443E0043A797 /* VideoTime.swift */,
 				C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */,
+				C00AC4901F068385000D2B0D /* ImageStore.swift */,
 			);
 			name = Modelo;
 			sourceTree = "<group>";
@@ -321,6 +325,7 @@
 				C09ED2E91F03B548000937B5 /* DetalleIpadViewController.swift in Sources */,
 				C0580C401F026A2C001CAD73 /* SwiftyJSON.swift in Sources */,
 				C0580C3C1F026A25001CAD73 /* UnidadDidactiva.swift in Sources */,
+				C00AC4921F068385000D2B0D /* ImageStore.swift in Sources */,
 				C0580C271F025A11001CAD73 /* AppDelegate.swift in Sources */,
 				C0580C3E1F026A25001CAD73 /* VideoTime.swift in Sources */,
 				C0580C371F026365001CAD73 /* ReaIpadViewController.swift in Sources */,
@@ -347,6 +352,7 @@
 				C0F3D44A1D2A7E02009BCC5A /* AppDelegate.swift in Sources */,
 				C0A4E9ED1D366CAD00A098E7 /* DetalleReaViewController.swift in Sources */,
 				C06CABBC1D2D2D2C00704668 /* VideoStore.swift in Sources */,
+				C00AC4911F068385000D2B0D /* ImageStore.swift in Sources */,
 				C028A8001D2E6CE30014C810 /* Rea.swift in Sources */,
 				C0F823A11D49F92600835928 /* DuracionView.swift in Sources */,
 				C0A46D941D78443E0043A797 /* VideoTime.swift in Sources */,

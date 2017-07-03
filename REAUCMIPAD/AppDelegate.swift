@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -20,10 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Activamos estadísticas
     // No sirve GATracker. Hay que hacerse con otras.
     
+    
     // Creación de los datos REA
     let rootViewController = window!.rootViewController as! ReaIpadViewController
     let reaIpadViewController = rootViewController
     reaIpadViewController.almacenRea = VideoStore()
+    
+    let imageStore = ImageStore()
+    reaIpadViewController.imageStore = imageStore
+    
     
     return true
   }

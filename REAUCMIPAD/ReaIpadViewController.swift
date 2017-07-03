@@ -17,6 +17,7 @@ class ReaIpadViewController: UIViewController {
   
   var almacenRea: VideoStore!
   var listaRea = [Rea]()
+  var imageStore: ImageStore!
   
   @IBOutlet var reaCollectionView: UICollectionView!
   static let idCell = "cellMoocID"
@@ -36,6 +37,7 @@ class ReaIpadViewController: UIViewController {
     reaCollectionView.dataSource = self
     reaCollectionView.delegate   = self
     reaCollectionView.backgroundColor = .clear
+    
   }
   
 
@@ -130,6 +132,7 @@ extension ReaIpadViewController: UICollectionViewDelegate {
     print("Camino de indexPath: \(indexPath.row)")
     if let destinationViewController = self.storyboard?.instantiateViewController(withIdentifier: "ReaIDController") as? DetalleIpadViewController {
       destinationViewController.rea = listaRea[indexPath.item]
+      destinationViewController.imageStore = imageStore
       self.present(destinationViewController, animated: true, completion: nil)
     }
     

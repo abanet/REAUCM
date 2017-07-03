@@ -14,4 +14,8 @@ class VideoTableViewCell: UITableViewCell {
   @IBOutlet var tituloVideoLabel: UILabel!
   @IBOutlet var contenedorDuracionView: UIView!
   
+  override func prepareForReuse() {
+    self.miniaturaVideoImageView = nil
+  }
+  
 }

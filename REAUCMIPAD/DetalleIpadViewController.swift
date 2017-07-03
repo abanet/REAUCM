@@ -13,7 +13,7 @@ import AVFoundation
 class DetalleIpadViewController: UIViewController {
 
   var rea: Rea!
-  
+  var imageStore: ImageStore!
 
   var fullScreenPlayerViewController: AVPlayerViewController!
   var asset: AVAsset!
@@ -22,6 +22,9 @@ class DetalleIpadViewController: UIViewController {
       asset = AVAsset(url: self.video.urlVideo as URL)
     }
   }
+  
+
+  
   
   @IBOutlet var capitulosTableView: UITableView!
   static let cellID = "cellCapituloRea"
@@ -42,9 +45,15 @@ class DetalleIpadViewController: UIViewController {
       fullScreenPlayerViewController = AVPlayerViewController()
       fullScreenPlayerViewController.showsPlaybackControls = true
       
+      self.modalTransitionStyle = .flipHorizontal
+      // Activar Swipe right para volver a la pantalla anterior
+      let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+      swipeRight.direction = .right
+      self.view.addGestureRecognizer(swipeRight)
+      
       //fullScreenPlayerViewController.requiresLinearPlayback = false
 
-        // Do any additional setup after loading the view.
+      
     }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +84,10 @@ class DetalleIpadViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+  
+  func handleGesture(){
+    self.dismiss(animated: true, completion: nil)
+  }
 
   @IBAction func volverPressed(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
@@ -113,7 +125,6 @@ extension DetalleIpadViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = capitulosTableView.dequeueReusableCell(withIdentifier: DetalleIpadViewController.cellID) as! CapituloTableViewCell
-    
     // Obtenemos el vídeo que estamos tratando
     let unidadDidactica = rea.unidades[indexPath.section]
     let video = unidadDidactica.videos[indexPath.row]
@@ -137,6 +148,8 @@ extension DetalleIpadViewController: UITableViewDataSource {
     self.reproducirVideo()
   }
   
+
+  
   func reproducirVideo() {
     print("Preparando para visualizar \(self.video.urlVideo)")
     let playerItem = AVPlayerItem(asset: asset)
@@ -152,20 +165,41 @@ extension DetalleIpadViewController: UITableViewDataSource {
   }
   
   func configurarCeldaCapitulo(_ celda: CapituloTableViewCell, indexPath: IndexPath) -> CapituloTableViewCell {
-    // Cargamos la imagen de la celda
-    video.miniatura!.obtenerImagen {
-      (imageResult) -> Void in
-      switch imageResult {
-      case let . success(image):
-        DispatchQueue.main.async {
-          celda.capituloImageView.image = image
+    // Obtenemos nombre imagen que vamos a intentar cargar
+    // Obtenemos el vídeo que estamos tratando
+    let unidadDidactica = rea.unidades[indexPath.section]
+    let video = unidadDidactica.videos[indexPath.row]
+    
+    
+    if let idPhoto = video.miniatura?.photoID {
+      if let imagenCache = imageStore.imageForKey(key: idPhoto) { // foto en caché?
+        if celda.capituloImageView != nil {
+          celda.capituloImageView.image = imagenCache
         }
-        
-      case let .failure(error):
-        print("Error descargando imagen: \(error)")
+      } else { // Cargamos la imagen de la celda
+        video.miniatura!.obtenerImagen {
+          [weak self](imageResult) -> Void in
+          switch imageResult {
+          case let . success(image):
+            if let idPhoto = video.miniatura?.photoID {
+              self?.imageStore.setImage(image: image, forKey: idPhoto)
+            }
+            DispatchQueue.main.async {
+              if celda.capituloImageView != nil {
+                celda.capituloImageView.image = image
+              }
+            }
+            
+          case let .failure(error):
+            print("Error descargando imagen: \(error)")
+          }
+        }
       }
     }
+    
     celda.lblCapituloTitle.text = video.title
     return celda
   }
+  
+// FIN CLASE
 }

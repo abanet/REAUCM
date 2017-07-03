@@ -18,5 +18,6 @@ class ReaCollectionViewCell: UICollectionViewCell {
     @IBOutlet var reaImageView: UIImageView!
   @IBOutlet var reaImageView: UIImageView!
   @IBOutlet var reaLabel: UILabel!
+ 
   
 }

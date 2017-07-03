@@ -13,6 +13,7 @@ class CapituloTableViewCell: UITableViewCell {
   @IBOutlet var capituloImageView: UIImageView!
   @IBOutlet var lblCapituloTitle: UILabel!
   
+  //var photoId: String?
   
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,4 +26,7 @@ class CapituloTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+  override func prepareForReuse() {
+    self.capituloImageView = nil
+  }
 }
