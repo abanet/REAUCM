@@ -14,6 +14,7 @@ class DetalleIpadViewController: UIViewController {
 
   var rea: Rea!
   var imageStore: ImageStore!
+  let stats = GoogleEstadisticas()
 
   var fullScreenPlayerViewController: AVPlayerViewController!
   var asset: AVAsset!
@@ -57,6 +58,10 @@ class DetalleIpadViewController: UIViewController {
     }
   
   override func viewWillAppear(_ animated: Bool) {
+    // apuntar estadísticas
+    
+    stats.registrarEvento(descripcion: "Rea iOS-iPAD", accion: "Entrando", rea: rea)
+    
     // Delegado y datasource que alimentarán la tabla de índice.
     capitulosTableView.delegate   = self
     capitulosTableView.dataSource = self
@@ -91,6 +96,10 @@ class DetalleIpadViewController: UIViewController {
 
   @IBAction func volverPressed(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
   }
   
 }
@@ -157,11 +166,25 @@ extension DetalleIpadViewController: UITableViewDataSource {
     
     
     fullScreenPlayerViewController!.player = fullScreenPlayer
-    /*NotificationCenter.default.addObserver(self, selector: #selector(DetalleReaViewController.playerDidFinishPlaying(_:)),
+    NotificationCenter.default.addObserver(self, selector: #selector(DetalleIpadViewController.playerDidFinishPlaying(_:)),
                                            name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: fullScreenPlayerViewController!.player!.currentItem)
-    */
+    
     fullScreenPlayerViewController!.player?.play()
     present(fullScreenPlayerViewController, animated: true, completion: nil)
+    stats.registrarEvento(descripcion: "Vídeo iOS-iPAD", accion: "Visualizando", rea: rea)
+  }
+  
+  func playerDidFinishPlaying(_ note: Notification) {
+    print("Video Finished")
+    
+    
+    // Estadística de finalización de vídeo
+    
+    // Reseteamos el seekTime para que la próxima vez empieza desde cero.
+    fullScreenPlayerViewController!.player?.seek(to: kCMTimeZero)
+    stats.registrarEvento(descripcion: "Vídeo iOS-iPAD", accion: "Terminado", rea: rea)
+   
+    fullScreenPlayerViewController.dismiss(animated: true, completion: nil)
   }
   
   func configurarCeldaCapitulo(_ celda: CapituloTableViewCell, indexPath: IndexPath) -> CapituloTableViewCell {
@@ -200,6 +223,4 @@ extension DetalleIpadViewController: UITableViewDataSource {
     celda.lblCapituloTitle.text = video.title
     return celda
   }
-  
-// FIN CLASE
 }

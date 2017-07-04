@@ -8,19 +8,26 @@
 
 import UIKit
 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   
-
+  /*
+   let appConfiguration = AppConfiguration(
+    clientIdentifier: "e51d9db7fbbb36322e772a0c2eac64cf5e2880f4",
+    clientSecret: "4+X5LSOuDqcc2i15klIdXn6QQM/JhNNiPIUONjzGxPaBQQi3KI9gqrPBr/VVyYvqMfQX2tcmQt/Ya4HmM58CqhR+Mu1c1CbAdeIXnCO2dJ5s/dI08xoycWSc34rXzvA2",
+    scope: [.Public])
+ */
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     
     // Activamos estadísticas
-    // No sirve GATracker. Hay que hacerse con otras.
-    
+    let stats = GoogleEstadisticas()
+    stats.registrarInicioSesion()
     
     // Creación de los datos REA
     let rootViewController = window!.rootViewController as! ReaIpadViewController
