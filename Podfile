@@ -8,6 +8,8 @@ target 'REAUCMIPAD' do
   # Pods for REAUCMIPAD
   pod 'AFNetworking', '~> 3.0'
   pod 'Google/Analytics'
+  pod 'Firebase/Core'
+  pod 'Firebase/Storage'
 end
 
 target 'REAUCMTV' do
@@ -15,5 +17,6 @@ target 'REAUCMTV' do
   use_frameworks!
 
   # Pods for REAUCMTV
+  
 
 end

@@ -14,6 +14,8 @@ class ReaIpadViewController: UIViewController {
   @IBOutlet var bannerView: UIImageView!
   @IBOutlet var lblTitle: UILabel!
   @IBOutlet var lblDescripcion: UILabel!
+  @IBOutlet var activityIndicator: UIActivityIndicatorView!
+  
   
   var almacenRea: VideoStore!
   var listaRea = [Rea]()
@@ -32,6 +34,7 @@ class ReaIpadViewController: UIViewController {
       self?.listaRea = reas
       self?.reaCollectionView?.reloadData()
       self?.mostrarPantalla(conRea:0)
+      self?.activityIndicator.stopAnimating()
     }
     
     reaCollectionView.dataSource = self
@@ -51,22 +54,29 @@ class ReaIpadViewController: UIViewController {
     //lblTitle.text = rea.title
     //lblDescripcion.text = rea.description
     
-    rea.fotoLarga!.obtenerImagen {
-      [weak self](imageResult) -> Void in
-      switch imageResult {
-      case let . success(image):
-        DispatchQueue.main.async {
-          self?.bannerView.image = image
-          self?.bannerView.alpha = 0
-          UIView.animate(withDuration: 1.0, animations: {
-            self?.bannerView.alpha = 1.0
-          })
+    if let idPhoto = rea.fotoLarga?.photoID {
+      if let imagenCache = imageStore.imageForKey(key:idPhoto) {
+        self.bannerView.image = imagenCache
+      } else {
+        rea.fotoLarga!.obtenerImagen {
+          [weak self](imageResult) -> Void in
+          switch imageResult {
+          case let . success(image):
+            DispatchQueue.main.async {
+              self?.bannerView.image = image
+              self?.bannerView.alpha = 0
+              UIView.animate(withDuration: 1.0, animations: {
+                self?.bannerView.alpha = 1.0
+              })
+            }
+            
+          case let .failure(error):
+            print("Error descargando imagen: \(error)")
+          }
         }
-        
-      case let .failure(error):
-        print("Error descargando imagen: \(error)")
       }
     }
+    
   }
   
   
@@ -108,17 +118,24 @@ extension ReaIpadViewController: UICollectionViewDataSource {
     let sectionRea = reaEnSeccion(indexPath.section)
     let rea = sectionRea[indexPath.item]
     
-    rea.fotoSeleccion!.obtenerImagen {
-      (imageResult) -> Void in
-      switch imageResult {
-      case let . success(image):
-        DispatchQueue.main.async {
-          celda.reaImageView.image = image
+    if let idPhoto = rea.fotoSeleccion?.photoID {
+      if let imagenCache = imageStore.imageForKey(key: idPhoto) {
+        celda.reaImageView.image = imagenCache
+      } else {
+        rea.fotoSeleccion!.obtenerImagen {
+          (imageResult) -> Void in
+          switch imageResult {
+          case let . success(image):
+            DispatchQueue.main.async {
+              celda.reaImageView.image = image
+            }
+          case let .failure(error):
+            print("Error descargando imagen: \(error)")
+          }
         }
-      case let .failure(error):
-        print("Error descargando imagen: \(error)")
       }
     }
+    
     celda.lblTitle.text = rea.title
     return celda
   }

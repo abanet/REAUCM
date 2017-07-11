@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 
@@ -25,9 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     
+    // Activación Firebase
+    FirebaseApp.configure()
+    
     // Activamos estadísticas
     let stats = GoogleEstadisticas()
     stats.registrarInicioSesion()
+    
+    
     
     // Creación de los datos REA
     let rootViewController = window!.rootViewController as! ReaIpadViewController

@@ -10,6 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
+
 class DetalleIpadViewController: UIViewController {
 
   var rea: Rea!
@@ -18,9 +19,11 @@ class DetalleIpadViewController: UIViewController {
 
   var fullScreenPlayerViewController: AVPlayerViewController!
   var asset: AVAsset!
-  var video: Video! {
+  var video: Video? {
     didSet {
-      asset = AVAsset(url: self.video.urlVideo as URL)
+      if let url = video?.urlVideo {
+        asset = AVAsset(url: url as URL)
+      }
     }
   }
   
@@ -58,9 +61,9 @@ class DetalleIpadViewController: UIViewController {
     }
   
   override func viewWillAppear(_ animated: Bool) {
-    // apuntar estadísticas
+    // apuntar estadística
+    stats.registrarEvento(id: rea.ucIdentifier, title: rea.title, type: "REA-iPAD")
     
-    stats.registrarEvento(descripcion: "Rea iOS-iPAD", accion: "Entrando", rea: rea)
     
     // Delegado y datasource que alimentarán la tabla de índice.
     capitulosTableView.delegate   = self
@@ -71,19 +74,26 @@ class DetalleIpadViewController: UIViewController {
     lblCreador.text = rea.creator
     descripcionTextView.text = rea.description
     
-    rea.fotoSeleccion!.obtenerImagen {
-      [weak self] (imageResult) -> Void in
-      switch imageResult {
-      case let . success(image):
-        DispatchQueue.main.async {
-          // cuidado con memory leaks
-          self?.reaImageView.image = image
+    if let idPhoto = rea.fotoSeleccion!.photoID {
+      if let imagenCache = imageStore.imageForKey(key: idPhoto) {
+        self.reaImageView.image = imagenCache
+      } else {
+        rea.fotoSeleccion!.obtenerImagen {
+          [weak self] (imageResult) -> Void in
+          switch imageResult {
+          case let . success(image):
+            DispatchQueue.main.async {
+              // cuidado con memory leaks
+              self?.reaImageView.image = image
+            }
+            
+          case let .failure(error):
+            print("Error descargando imagen: \(error)")
+          }
         }
-        
-      case let .failure(error):
-        print("Error descargando imagen: \(error)")
       }
     }
+    
   }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -137,8 +147,8 @@ extension DetalleIpadViewController: UITableViewDataSource {
     // Obtenemos el vídeo que estamos tratando
     let unidadDidactica = rea.unidades[indexPath.section]
     let video = unidadDidactica.videos[indexPath.row]
-    self.video = video // actualizamos la variable de clase para actualizar el asset.
     
+      self.video = video // actualizamos la variable de clase para actualizar el asset.
    return self.configurarCeldaCapitulo(cell, indexPath: indexPath)
     
   }
@@ -160,7 +170,6 @@ extension DetalleIpadViewController: UITableViewDataSource {
 
   
   func reproducirVideo() {
-    print("Preparando para visualizar \(self.video.urlVideo)")
     let playerItem = AVPlayerItem(asset: asset)
     let fullScreenPlayer = AVPlayer(playerItem: playerItem)
     
@@ -171,7 +180,7 @@ extension DetalleIpadViewController: UITableViewDataSource {
     
     fullScreenPlayerViewController!.player?.play()
     present(fullScreenPlayerViewController, animated: true, completion: nil)
-    stats.registrarEvento(descripcion: "Vídeo iOS-iPAD", accion: "Visualizando", rea: rea)
+    stats.registrarEvento(id: video!.ucIdentifier, title: video!.title, type: "start-video-iPAD")
   }
   
   func playerDidFinishPlaying(_ note: Notification) {
@@ -182,8 +191,7 @@ extension DetalleIpadViewController: UITableViewDataSource {
     
     // Reseteamos el seekTime para que la próxima vez empieza desde cero.
     fullScreenPlayerViewController!.player?.seek(to: kCMTimeZero)
-    stats.registrarEvento(descripcion: "Vídeo iOS-iPAD", accion: "Terminado", rea: rea)
-   
+    stats.registrarEvento(id: video!.ucIdentifier, title: "Fin: \(video!.title)", type: "finished-video-iPAD")
     fullScreenPlayerViewController.dismiss(animated: true, completion: nil)
   }
   
