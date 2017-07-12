@@ -21,13 +21,16 @@ class ReaIpadViewController: UIViewController {
   var listaRea = [Rea]()
   var imageStore: ImageStore!
   
+  
   @IBOutlet var reaCollectionView: UICollectionView!
   static let idCell = "cellMoocID"
   
   
   override func viewDidLoad() {
-        super.viewDidLoad()
-    
+    super.viewDidLoad()
+
+    let checkNet = TrackNetwork()
+    checkNet.addObserverToNetwork(vc: self)
     
     // Lectura de vídeos y actualización del collectionView cuando acaba la descarga.
     almacenRea.leerDatosRea() { [weak self] reas in
@@ -43,8 +46,7 @@ class ReaIpadViewController: UIViewController {
     
   }
   
-
-  
+   
   // Cambia la imagen de background con la del índice pasado como parámetro.
   func mostrarPantalla(conRea: Int) {
     let sectionRea = reaEnSeccion(0)
@@ -79,7 +81,22 @@ class ReaIpadViewController: UIViewController {
     
   }
   
-  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    if Reachability.isConnectedToNetwork() == true
+    {
+      print("Internet Connection Available!")
+    }
+    else
+    { // Entra aquí pero no muestra el alert!!
+      print("Internet Connection not Available!")
+      let messageFullBody = "Conecte su dispositivo a una red para poder utilizar la app REAUCMTV"
+      let alertController = UIAlertController(title: "Red no detectada", message: messageFullBody, preferredStyle: .alert)
+      let OKAction = UIAlertAction(title: "OK", style: .default)
+      alertController.addAction(OKAction)
+      self.present(alertController, animated: true, completion: nil)
+    }
+  }
   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

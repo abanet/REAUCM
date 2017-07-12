@@ -45,6 +45,10 @@ class DetalleIpadViewController: UIViewController {
 
       guard rea != nil else { return } // no vaya a ser...
       
+      // Checking Network
+      let checkNet = TrackNetwork()
+      checkNet.addObserverToNetwork(vc: self)
+      
       // Inicialización AVPlayerViewController
       fullScreenPlayerViewController = AVPlayerViewController()
       fullScreenPlayerViewController.showsPlaybackControls = true
