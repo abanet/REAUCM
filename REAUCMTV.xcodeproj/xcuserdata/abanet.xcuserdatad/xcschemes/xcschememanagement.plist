@@ -4,19 +4,29 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>REAUCMIPAD copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>REAUCMIPAD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>6</integer>
 		</dict>
 		<key>REAUCMTV.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>C00EAC6D1F18E1D7006BFB3D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C0580C231F025A11001CAD73</key>
 		<dict>
 			<key>primary</key>

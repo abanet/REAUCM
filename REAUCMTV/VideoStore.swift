@@ -32,7 +32,6 @@ enum ImageError: Error {
 
 class VideoStore {
   
-  
   let session: URLSession = {
     let config = URLSessionConfiguration.default
     config.requestCachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData //.ReturnCacheDataElseLoad

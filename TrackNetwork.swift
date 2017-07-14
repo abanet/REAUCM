@@ -59,8 +59,10 @@ class TrackNetwork {
           if isReachable {
             vc.viewDidLoad()
           } else {
-            let messageFullBody = "\(reachableOrNot)\n\(reachableStatus)"
-            let alertController = UIAlertController(title: messageTitle, message: messageFullBody, preferredStyle: .alert)
+            //let messageFullBody = "\(reachableOrNot)\n\(reachableStatus)"
+            let titulo = "Detectados problemas de conexión"
+            let mensaje = "Parece que hay problemas con la conexión a internet. Asegúrese de que está conectado a una red válida."
+            let alertController = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default)
             alertController.addAction(OKAction)
             vc.present(alertController, animated: true, completion: nil)

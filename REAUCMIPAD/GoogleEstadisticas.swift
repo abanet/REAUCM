@@ -18,7 +18,6 @@ class GoogleEstadisticas {
   }
   
   func registrarInicioSesion() {
-    
     Analytics.logEvent(AnalyticsEventAppOpen, parameters: nil)
   }
   

@@ -63,6 +63,7 @@
 		A09BA6601DD1F151008CBB34 /* GATracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GATracker.swift; sourceTree = "<group>"; };
 		B6C58096D997DE85FFED6A8D /* Pods-REAUCMIPAD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-REAUCMIPAD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-REAUCMIPAD/Pods-REAUCMIPAD.debug.xcconfig"; sourceTree = "<group>"; };
 		C00AC4901F068385000D2B0D /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		C00EAC901F18E1D7006BFB3D /* REAUCMIPAD copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "REAUCMIPAD copy-Info.plist"; path = "/UCM/desarrollosTVOS/UCMTV/xcode/REAUCM/REAUCMIPAD copy-Info.plist"; sourceTree = "<absolute>"; };
 		C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestorTiempos.swift; sourceTree = "<group>"; };
 		C028A7FA1D2E63DE0014C810 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = ../Video.swift; sourceTree = "<group>"; };
 		C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnidadDidactiva.swift; path = ../UnidadDidactiva.swift; sourceTree = "<group>"; };
@@ -164,6 +165,7 @@
 				C00AC4901F068385000D2B0D /* ImageStore.swift */,
 			);
 			name = Modelo;
+			path = REAUCMTV;
 			sourceTree = "<group>";
 		};
 		C03598EA1F16414E0052CCB8 /* Network */ = {
@@ -241,12 +243,14 @@
 		C0F3D43D1D2A7E01009BCC5A = {
 			isa = PBXGroup;
 			children = (
+				C028A7FC1D2E69490014C810 /* Modelo */,
 				C03598EA1F16414E0052CCB8 /* Network */,
 				C0F3D4481D2A7E02009BCC5A /* REAUCMTV */,
 				C0580C251F025A11001CAD73 /* REAUCMIPAD */,
 				C0F3D4471D2A7E01009BCC5A /* Products */,
 				B11FB4017D9E7B8D2BDB689F /* Pods */,
 				9C9841AB0C53DF444B55A6F8 /* Frameworks */,
+				C00EAC901F18E1D7006BFB3D /* REAUCMIPAD copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -265,7 +269,6 @@
 				C083A92E1D8938BB00BD69FC /* Estadisticas */,
 				C042E4C91D34FBD100E52819 /* Vistas */,
 				C042E4C61D34E6C000E52819 /* Controllers */,
-				C028A7FC1D2E69490014C810 /* Modelo */,
 				C028A7F91D2E63B20014C810 /* JSON */,
 				C0F3D4491D2A7E02009BCC5A /* AppDelegate.swift */,
 				C0F3D44D1D2A7E02009BCC5A /* Main.storyboard */,
