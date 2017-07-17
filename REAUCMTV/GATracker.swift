@@ -115,7 +115,7 @@ class GATracker {
                 else {
                         if (error != nil) {
                             #if DEBUG
-                                print(error!.description)
+                                print(error!.localizedDescription)
                             #endif
                         }
                 }

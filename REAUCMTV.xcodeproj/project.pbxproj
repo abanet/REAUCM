@@ -13,6 +13,7 @@
 		A09BA6611DD1F151008CBB34 /* GATracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09BA6601DD1F151008CBB34 /* GATracker.swift */; };
 		C00AC4911F068385000D2B0D /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00AC4901F068385000D2B0D /* ImageStore.swift */; };
 		C00AC4921F068385000D2B0D /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00AC4901F068385000D2B0D /* ImageStore.swift */; };
+		C00EAC961F1CBD96006BFB3D /* GATracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09BA6601DD1F151008CBB34 /* GATracker.swift */; };
 		C014F9E61D86AAA400DBCB48 /* GestorTiempos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */; };
 		C028A7FB1D2E63DE0014C810 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FA1D2E63DE0014C810 /* Video.swift */; };
 		C028A7FE1D2E696B0014C810 /* UnidadDidactiva.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A7FD1D2E696B0014C810 /* UnidadDidactiva.swift */; };
@@ -144,6 +145,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C00EAC971F1CBE46006BFB3D /* Vistas */ = {
+			isa = PBXGroup;
+			children = (
+				C08D9F2A1F03ABFA0074037A /* ReaCollectionViewCell.swift */,
+				C0C022C91F03CA7B00EC5C02 /* CapituloTableViewCell.swift */,
+			);
+			name = Vistas;
+			sourceTree = "<group>";
+		};
+		C00EAC981F1CBE4F006BFB3D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C0580C361F026365001CAD73 /* ReaIpadViewController.swift */,
+				C09ED2E81F03B548000937B5 /* DetalleIpadViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		C028A7F91D2E63B20014C810 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,10 +227,8 @@
 				C0580C2D1F025A11001CAD73 /* Assets.xcassets */,
 				C0580C2F1F025A11001CAD73 /* LaunchScreen.storyboard */,
 				C0580C321F025A11001CAD73 /* Info.plist */,
-				C0580C361F026365001CAD73 /* ReaIpadViewController.swift */,
-				C08D9F2A1F03ABFA0074037A /* ReaCollectionViewCell.swift */,
-				C09ED2E81F03B548000937B5 /* DetalleIpadViewController.swift */,
-				C0C022C91F03CA7B00EC5C02 /* CapituloTableViewCell.swift */,
+				C00EAC981F1CBE4F006BFB3D /* Controllers */,
+				C00EAC971F1CBE46006BFB3D /* Vistas */,
 			);
 			path = REAUCMIPAD;
 			sourceTree = "<group>";
@@ -491,6 +508,7 @@
 				C09ED2E91F03B548000937B5 /* DetalleIpadViewController.swift in Sources */,
 				C09F83151F13778B0016CC16 /* Video.swift in Sources */,
 				C0580C401F026A2C001CAD73 /* SwiftyJSON.swift in Sources */,
+				C00EAC961F1CBD96006BFB3D /* GATracker.swift in Sources */,
 				C0580C3C1F026A25001CAD73 /* UnidadDidactiva.swift in Sources */,
 				C00AC4921F068385000D2B0D /* ImageStore.swift in Sources */,
 				C0580C271F025A11001CAD73 /* AppDelegate.swift in Sources */,

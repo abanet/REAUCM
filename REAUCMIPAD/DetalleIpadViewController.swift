@@ -66,8 +66,8 @@ class DetalleIpadViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     // apuntar estadística
-    stats.registrarEvento(id: rea.ucIdentifier, title: rea.title, type: "REA-iPAD")
-    
+    //stats.registrarEvento(id: rea.ucIdentifier, title: rea.title, type: "REA-iPAD")
+    GATracker.sharedInstance.event(category: "Rea iOS", action: "Entrando", label:"\(rea.ucIdentifier):\(rea.title)", customParameters: ["idRea":rea.ucIdentifier])
     
     // Delegado y datasource que alimentarán la tabla de índice.
     capitulosTableView.delegate   = self
@@ -184,7 +184,12 @@ extension DetalleIpadViewController: UITableViewDataSource {
     
     fullScreenPlayerViewController!.player?.play()
     present(fullScreenPlayerViewController, animated: true, completion: nil)
-    stats.registrarEvento(id: video!.ucIdentifier, title: video!.title, type: "start-video-iPAD")
+    
+    // Estadísticas
+    //stats.registrarEvento(id: video!.ucIdentifier, title: video!.title, type: "start-video-iPAD")
+    if let video = video {
+    GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Visualizando", label:"\(video.ucIdentifier):\(video.title)", customParameters: ["idRea":rea.ucIdentifier, "idVideo":video.ucIdentifier])
+    }
   }
   
   func playerDidFinishPlaying(_ note: Notification) {
@@ -195,7 +200,10 @@ extension DetalleIpadViewController: UITableViewDataSource {
     
     // Reseteamos el seekTime para que la próxima vez empieza desde cero.
     fullScreenPlayerViewController!.player?.seek(to: kCMTimeZero)
-    stats.registrarEvento(id: video!.ucIdentifier, title: "Fin: \(video!.title)", type: "finished-video-iPAD")
+    if let video = video {
+    GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Terminado", label:"\(video.ucIdentifier):\(video.title)", customParameters: ["idRea":rea.ucIdentifier, "idVideo":video.ucIdentifier])
+    }
+    //stats.registrarEvento(id: video!.ucIdentifier, title: "Fin: \(video!.title)", type: "finished-video-iPAD")
     fullScreenPlayerViewController.dismiss(animated: true, completion: nil)
   }
   

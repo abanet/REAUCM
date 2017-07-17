@@ -30,8 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     FirebaseApp.configure()
     
     // Activamos estadísticas
-    let stats = GoogleEstadisticas()
-    stats.registrarInicioSesion()
+    GATracker.setup(tid: "UA-83832384-1") // id para iosucmovil@gmail.com, REAUCMTV
+    GATracker.sharedInstance.screenView(screenName: "Sesiones Abiertas (iPADTV)", customParameters: nil)
+    // Activamos estadísticas
+    /*let stats = GoogleEstadisticas()
+    stats.registrarInicioSesion()*/
     
     
     
