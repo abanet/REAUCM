@@ -9,6 +9,7 @@
 import Foundation
 import CoreMedia
 
+
 enum ElementType {
   case collection
   case movingImage
@@ -28,6 +29,8 @@ override var description: String {
   }
 
   init(fromJson json: JSON!){
+    super.init()
+    
     guard json != nil else {
       return
     }
@@ -43,13 +46,21 @@ override var description: String {
         identifierIOS = url
     }
     
-    urlVideo = URL(string: reaAPI.baseURLStringVideos + identifierIOS + reaAPI.finURLStringVideos)
+    self.urlVideo = getURLVideo(forRecurso: identifierIOS)
+    
     
     
     // Establecemos la imagen miniatura
-    print("URL: \(reaAPI.baseURLImagenes)miniatura_\(ucIdentifier!)")
+    //print("URL: \(reaAPI.baseURLImagenes)miniatura_\(ucIdentifier!)")
     if let identificador = ucIdentifier {
         miniatura = Photo(photoID: "miniatura_" + identificador + ".png", remoteURL: URL(string: reaAPI.baseURLImagenes + "miniatura_\(identificador).png")!)
   }
  }
+  
+  // función original que toma datos de ucm
+  func getURLVideo(forRecurso: String) -> URL {
+    return URL(string: reaAPI.baseURLStringVideos + identifierIOS + reaAPI.finURLStringVideos)!
+  }
+  
+    
 }

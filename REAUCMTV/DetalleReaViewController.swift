@@ -152,7 +152,9 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
       switch imageResult {
       case let . success(image):
         DispatchQueue.main.async {
-          cell.miniaturaVideoImageView.image = image
+          if cell.miniaturaVideoImageView != nil {
+            cell.miniaturaVideoImageView.image = image
+          }
         }
         
       case let .failure(error):

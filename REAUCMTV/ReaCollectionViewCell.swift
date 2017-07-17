@@ -11,7 +11,9 @@ import UIKit
 class ReaCollectionViewCell: UICollectionViewCell {
   
   
-  @IBOutlet var reaImageView: UIImageView!
-  @IBOutlet var reaLabel: UILabel!
+    @IBOutlet var reaImageView: UIImageView!
+    @IBOutlet var lblTitle: UILabel!
+    @IBOutlet var reaLabel: UILabel!
+ 
   
 }
