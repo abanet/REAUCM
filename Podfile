@@ -10,13 +10,6 @@ target 'REAUCMIPAD' do
   pod 'Google/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
-end
-
-target 'REAUCMTV' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for REAUCMTV
   
-
 end
+
