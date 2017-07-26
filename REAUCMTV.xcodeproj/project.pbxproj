@@ -37,7 +37,6 @@
 		C0580C401F026A2C001CAD73 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09BA65E1DD1EE5D008CBB34 /* SwiftyJSON.swift */; };
 		C0611BB41F0BA46E0097C00F /* GoogleEstadisticas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0611BB31F0BA46E0097C00F /* GoogleEstadisticas.swift */; };
 		C06CABBC1D2D2D2C00704668 /* VideoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06CABBB1D2D2D2C00704668 /* VideoStore.swift */; };
-		C071C25A1F14DC4C002876D9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0F3D4521D2A7E02009BCC5A /* Info.plist */; };
 		C071C25B1F14DC4D002876D9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0F3D4521D2A7E02009BCC5A /* Info.plist */; };
 		C0789F221D3CF3B00017E6D5 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0789F211D3CF3B00017E6D5 /* VideoTableViewCell.swift */; };
 		C07B08921F151A120094DD9E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C07B08911F151A120094DD9E /* AdSupport.framework */; };
@@ -335,7 +334,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = UCM;
 				TargetAttributes = {
 					C0580C231F025A11001CAD73 = {
@@ -388,7 +387,6 @@
 			files = (
 				C0F3D4511D2A7E02009BCC5A /* Assets.xcassets in Resources */,
 				C0F3D44F1D2A7E02009BCC5A /* Main.storyboard in Resources */,
-				C071C25A1F14DC4C002876D9 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

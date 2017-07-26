@@ -67,7 +67,8 @@ class DetalleIpadViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     // apuntar estadística
     //stats.registrarEvento(id: rea.ucIdentifier, title: rea.title, type: "REA-iPAD")
-    GATracker.sharedInstance.event(category: "Rea iOS", action: "Entrando", label:"\(rea.ucIdentifier):\(rea.title)", customParameters: ["idRea":rea.ucIdentifier])
+    let etiqueta = rea.ucIdentifier + ": " + rea.title //"\(rea.ucIdentifier!):\(rea.title!)"
+    GATracker.sharedInstance.event(category: "Rea iOS", action: "Entrando", label: etiqueta, customParameters: ["idRea":rea.ucIdentifier])
     
     // Delegado y datasource que alimentarán la tabla de índice.
     capitulosTableView.delegate   = self
@@ -188,7 +189,8 @@ extension DetalleIpadViewController: UITableViewDataSource {
     // Estadísticas
     //stats.registrarEvento(id: video!.ucIdentifier, title: video!.title, type: "start-video-iPAD")
     if let video = video {
-    GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Visualizando", label:"\(video.ucIdentifier):\(video.title)", customParameters: ["idRea":rea.ucIdentifier, "idVideo":video.ucIdentifier])
+      let etiqueta = video.ucIdentifier + ": " + video.title
+      GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Visualizando", label: etiqueta, customParameters: ["idRea":rea.ucIdentifier, "idVideo":video.ucIdentifier])
     }
   }
   

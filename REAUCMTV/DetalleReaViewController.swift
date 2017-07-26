@@ -88,7 +88,8 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     // Estadísticas de acceso a REA:
-    GATracker.sharedInstance.event(category: "Rea iOS", action: "Entrando", label:"\(rea.ucIdentifier):\(rea.title)", customParameters: ["idRea":rea.ucIdentifier])
+    let etiqueta = rea.ucIdentifier + ": " + rea.title
+    GATracker.sharedInstance.event(category: "Rea iOS", action: "Entrando", label: etiqueta, customParameters: ["idRea":rea.ucIdentifier])
     print("viewWillAppear")
     
   }
@@ -215,7 +216,8 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     let fullScreenPlayer = AVPlayer(playerItem: playerItem)
     
     //Estadística de visualización de vídeo
-    GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Visualizando", label:"\(self.video.ucIdentifier):\(self.video.title)", customParameters: ["idRea":rea.ucIdentifier, "idVideo":self.video.ucIdentifier])
+    let etiqueta = video.ucIdentifier + ": " + video.title
+    GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Visualizando", label: etiqueta, customParameters: ["idRea":rea.ucIdentifier, "idVideo":self.video.ucIdentifier])
     
     // obtenemos el total en segundos
     
