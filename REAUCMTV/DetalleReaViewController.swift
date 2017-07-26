@@ -16,6 +16,7 @@ import AVKit
 class DetalleReaViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   var rea: Rea!
+  var imageStore: ImageStore!
   
   //BARRASTIEMPO
   //var gestorTiempos: GestorTiempos!
@@ -66,20 +67,26 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     descripcionLabel.sizeToFit()
     descripcionLabel.text = rea.description
     
-    
-    rea.fotoSeleccion!.obtenerImagen {
-      (imageResult) -> Void in
-      switch imageResult {
-      case let . success(image):
-        DispatchQueue.main.async {
-          // cuidado con memory leaks
-          self.reaImageView.image = image
+    if let idPhoto = rea.fotoSeleccion?.photoID {
+      if let imagenCache = imageStore.imageForKey(key: idPhoto) {
+        self.reaImageView.image = imagenCache
+      } else {
+        rea.fotoSeleccion!.obtenerImagen {
+          [weak self] (imageResult) -> Void in
+          switch imageResult {
+          case let . success(image):
+            DispatchQueue.main.async {
+              self?.reaImageView.image = image
+              self?.imageStore.setImage(image: image, forKey: idPhoto)
+            }
+            
+          case let .failure(error):
+            print("Error descargando imagen: \(error)")
+          }
         }
-        
-      case let .failure(error):
-        print("Error descargando imagen: \(error)")
       }
     }
+    
   
     
   }
@@ -148,18 +155,29 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
 //    }
  
     // Cargamos la imagen de la celda
-    video.miniatura!.obtenerImagen {
-      (imageResult) -> Void in
-      switch imageResult {
-      case let . success(image):
-        DispatchQueue.main.async {
-          if cell.miniaturaVideoImageView != nil {
-            cell.miniaturaVideoImageView.image = image
+    if let idPhoto = video.miniatura?.photoID {
+      if let imagenCache = imageStore.imageForKey(key: idPhoto) {
+        if cell.miniaturaVideoImageView != nil {
+          cell.miniaturaVideoImageView.image = imagenCache
+        }
+      } else {
+        video.miniatura!.obtenerImagen {
+          [weak self] (imageResult) -> Void in
+          switch imageResult {
+          case let . success(image):
+            self?.imageStore.setImage(image: image, forKey: idPhoto)
+            DispatchQueue.main.async {
+              if cell.miniaturaVideoImageView != nil {
+                cell.miniaturaVideoImageView.image = image
+                
+              }
+            }
+            
+          case let .failure(error):
+            print("Error descargando imagen: \(error)")
           }
         }
-        
-      case let .failure(error):
-        print("Error descargando imagen: \(error)")
+
       }
     }
     

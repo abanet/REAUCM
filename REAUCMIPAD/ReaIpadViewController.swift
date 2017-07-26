@@ -59,6 +59,7 @@ class ReaIpadViewController: UIViewController {
     if let idPhoto = rea.fotoLarga?.photoID {
       if let imagenCache = imageStore.imageForKey(key:idPhoto) {
         self.bannerView.image = imagenCache
+        print("Imagen larga cacheada!!!")
       } else {
         rea.fotoLarga!.obtenerImagen {
           [weak self](imageResult) -> Void in
@@ -66,6 +67,8 @@ class ReaIpadViewController: UIViewController {
           case let . success(image):
             DispatchQueue.main.async {
               self?.bannerView.image = image
+              self?.imageStore.setImage(image: image, forKey: idPhoto)
+              print("Llamando a setImage con key: \(idPhoto)")
               self?.bannerView.alpha = 0
               UIView.animate(withDuration: 1.0, animations: {
                 self?.bannerView.alpha = 1.0
@@ -131,11 +134,12 @@ extension ReaIpadViewController: UICollectionViewDataSource {
         celda.reaImageView.image = imagenCache
       } else {
         rea.fotoSeleccion!.obtenerImagen {
-          (imageResult) -> Void in
+          [weak self] (imageResult) -> Void in
           switch imageResult {
           case let . success(image):
             DispatchQueue.main.async {
               celda.reaImageView.image = image
+              self?.imageStore.setImage(image: image, forKey: idPhoto)
             }
           case let .failure(error):
             print("Error descargando imagen: \(error)")

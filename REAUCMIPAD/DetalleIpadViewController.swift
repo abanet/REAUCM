@@ -88,8 +88,8 @@ class DetalleIpadViewController: UIViewController {
           switch imageResult {
           case let . success(image):
             DispatchQueue.main.async {
-              // cuidado con memory leaks
               self?.reaImageView.image = image
+              self?.imageStore.setImage(image: image, forKey: idPhoto)
             }
             
           case let .failure(error):
@@ -226,9 +226,7 @@ extension DetalleIpadViewController: UITableViewDataSource {
           [weak self](imageResult) -> Void in
           switch imageResult {
           case let . success(image):
-            if let idPhoto = video.miniatura?.photoID {
               self?.imageStore.setImage(image: image, forKey: idPhoto)
-            }
             DispatchQueue.main.async {
               if celda.capituloImageView != nil {
                 celda.capituloImageView.image = image

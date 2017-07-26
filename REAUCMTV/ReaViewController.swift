@@ -19,6 +19,7 @@ class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectio
 
   var almacenRea: VideoStore!
   var listaRea = [Rea]()
+  var imageStore: ImageStore!
   
   fileprivate var indexReaSeleccionado = 0
   
@@ -72,6 +73,7 @@ class ReaViewController: UIViewController, UICollectionViewDelegate, UICollectio
         //destinationViewController.gestorTiempos = GestorTiempos(id: listaRea[indexReaSeleccionado].ucIdentifier)
         
         destinationViewController.rea = listaRea[indexReaSeleccionado]
+        destinationViewController.imageStore = imageStore
         
       }
     }
@@ -98,18 +100,25 @@ extension ReaViewController {
     let sectionRea = reaEnSeccion(indexPath.section)
     let rea = sectionRea[indexPath.item]
     
-    rea.fotoSeleccion!.obtenerImagen {
-      (imageResult) -> Void in
-      switch imageResult {
-      case let . success(image):
-        DispatchQueue.main.async {
-          cell.reaImageView.image = image
+    if let idPhoto = rea.fotoSeleccion?.photoID {
+      if let imagenCache = imageStore.imageForKey(key: idPhoto) {
+        cell.reaImageView.image = imagenCache
+      } else {
+        rea.fotoSeleccion!.obtenerImagen {
+          [weak self] (imageResult) -> Void in
+          switch imageResult {
+          case let . success(image):
+            DispatchQueue.main.async {
+              cell.reaImageView.image = image
+              self?.imageStore.setImage(image: image, forKey: idPhoto)
+            }
+          case let .failure(error):
+            print("Error descargando imagen: \(error)")
+          }
         }
-          
-      case let .failure(error):
-        print("Error descargando imagen: \(error)")
       }
     }
+    
     
     cell.reaLabel.text = rea.title
     
@@ -134,22 +143,30 @@ extension ReaViewController {
     tituloReaLabel.text = rea.title
     descripcionReaLabel.text = rea.description
     
-    rea.fotoLarga!.obtenerImagen {
-      (imageResult) -> Void in
-      switch imageResult {
-      case let . success(image):
-        DispatchQueue.main.async {
-          self.bannerImageView.image = image
-          self.bannerImageView.alpha = 0
-          UIView.animate(withDuration: 1.0, animations: {
-            self.bannerImageView.alpha = 1.0
-          })
+    if let idPhoto = rea.fotoLarga?.photoID {
+      if let imagenCache = imageStore.imageForKey(key: idPhoto) {
+        self.bannerImageView.image = imagenCache
+      } else {
+        rea.fotoLarga!.obtenerImagen {
+          [weak self] (imageResult) -> Void in
+          switch imageResult {
+          case let . success(image):
+            DispatchQueue.main.async {
+              self?.bannerImageView.image = image
+              self?.imageStore.setImage(image: image, forKey: idPhoto)
+              self?.bannerImageView.alpha = 0
+              UIView.animate(withDuration: 1.0, animations: {
+                self?.bannerImageView.alpha = 1.0
+              })
+            }
+            
+          case let .failure(error):
+            print("Error descargando imagen: \(error)")
+          }
         }
-        
-      case let .failure(error):
-        print("Error descargando imagen: \(error)")
       }
     }
+    
   }
   
   

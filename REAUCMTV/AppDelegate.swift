@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let rootViewController = window!.rootViewController as! ReaViewController
     let reaViewController = rootViewController
     reaViewController.almacenRea = VideoStore()
+    
+    // caché
+    let imageStore = ImageStore()
+    reaViewController.imageStore = imageStore
+    
     return true
   }
 
