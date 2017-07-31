@@ -189,7 +189,7 @@ extension DetalleIpadViewController: UITableViewDataSource {
     // Estadísticas
     //stats.registrarEvento(id: video!.ucIdentifier, title: video!.title, type: "start-video-iPAD")
     if let video = video {
-      let etiqueta = video.ucIdentifier + ": " + video.title
+      let etiqueta = rea.ucIdentifier + "->" + video.ucIdentifier + ": " + video.title
       GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Visualizando", label: etiqueta, customParameters: ["idRea":rea.ucIdentifier, "idVideo":video.ucIdentifier])
     }
   }
@@ -203,7 +203,8 @@ extension DetalleIpadViewController: UITableViewDataSource {
     // Reseteamos el seekTime para que la próxima vez empieza desde cero.
     fullScreenPlayerViewController!.player?.seek(to: kCMTimeZero)
     if let video = video {
-    GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Terminado", label:"\(video.ucIdentifier):\(video.title)", customParameters: ["idRea":rea.ucIdentifier, "idVideo":video.ucIdentifier])
+      let etiqueta = rea.ucIdentifier + "->" + video.ucIdentifier + ": " + video.title
+    GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Terminado", label: etiqueta, customParameters: ["idRea":rea.ucIdentifier, "idVideo":video.ucIdentifier])
     }
     //stats.registrarEvento(id: video!.ucIdentifier, title: "Fin: \(video!.title)", type: "finished-video-iPAD")
     fullScreenPlayerViewController.dismiss(animated: true, completion: nil)
@@ -240,6 +241,9 @@ extension DetalleIpadViewController: UITableViewDataSource {
       }
     }
     
+    let view = UIView()
+    view.backgroundColor = ColoresRea().fondoCeldaSeleccionada
+    celda.selectedBackgroundView = view
     celda.lblCapituloTitle.text = video.title
     return celda
   }

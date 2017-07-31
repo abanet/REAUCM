@@ -234,7 +234,7 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     let fullScreenPlayer = AVPlayer(playerItem: playerItem)
     
     //Estadística de visualización de vídeo
-    let etiqueta = video.ucIdentifier + ": " + video.title
+    let etiqueta = rea.ucIdentifier + "->" + video.ucIdentifier + ": " + video.title
     GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Visualizando", label: etiqueta, customParameters: ["idRea":rea.ucIdentifier, "idVideo":self.video.ucIdentifier])
     
     // obtenemos el total en segundos
@@ -298,7 +298,9 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
     
     // Reseteamos el seekTime para que la próxima vez empieza desde cero.
     fullScreenPlayerViewController!.player?.seek(to: kCMTimeZero)
-    GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Terminado", label:"\(self.video.ucIdentifier):\(self.video.title)", customParameters: ["idRea":rea.ucIdentifier, "idVideo":self.video.ucIdentifier])
+    
+    let etiqueta = rea.ucIdentifier + "->" + video.ucIdentifier + ": " + video.title
+    GATracker.sharedInstance.event(category: "Vídeo iOS", action: "Terminado", label: etiqueta, customParameters: ["idRea":rea.ucIdentifier, "idVideo":self.video.ucIdentifier])
     
     //BARRASTIEMPO
 //    if let tiempo = gestorTiempos.tiempos[MyVariables.idVideo] {

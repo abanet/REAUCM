@@ -22,6 +22,8 @@
 		C03598F01F16437E0052CCB8 /* TrackNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03598EE1F16437A0052CCB8 /* TrackNetwork.swift */; };
 		C03C702A1D33B634002E583B /* ReaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C70291D33B634002E583B /* ReaViewController.swift */; };
 		C03C702C1D33BB15002E583B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C702B1D33BB15002E583B /* Photo.swift */; };
+		C03EEEED1F28BDFD0009FC18 /* ColoresRea.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03EEEEC1F28BDFD0009FC18 /* ColoresRea.swift */; };
+		C03EEEEE1F28BDFD0009FC18 /* ColoresRea.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03EEEEC1F28BDFD0009FC18 /* ColoresRea.swift */; };
 		C042E4CB1D34FBED00E52819 /* ReaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042E4CA1D34FBED00E52819 /* ReaCollectionViewCell.swift */; };
 		C0580C271F025A11001CAD73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0580C261F025A11001CAD73 /* AppDelegate.swift */; };
 		C0580C2C1F025A11001CAD73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0580C2A1F025A11001CAD73 /* Main.storyboard */; };
@@ -70,6 +72,7 @@
 		C036D41D1F0A558200021AE4 /* REAUCMIPAD-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "REAUCMIPAD-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		C03C70291D33B634002E583B /* ReaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaViewController.swift; sourceTree = "<group>"; };
 		C03C702B1D33BB15002E583B /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		C03EEEEC1F28BDFD0009FC18 /* ColoresRea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoresRea.swift; sourceTree = "<group>"; };
 		C042E4CA1D34FBED00E52819 /* ReaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0580C241F025A11001CAD73 /* REAUCMIPAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = REAUCMIPAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0580C261F025A11001CAD73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +177,7 @@
 				C0A46D931D78443E0043A797 /* VideoTime.swift */,
 				C014F9E51D86AAA400DBCB48 /* GestorTiempos.swift */,
 				C00AC4901F068385000D2B0D /* ImageStore.swift */,
+				C03EEEEC1F28BDFD0009FC18 /* ColoresRea.swift */,
 			);
 			name = Modelo;
 			path = REAUCMTV;
@@ -344,7 +348,7 @@
 					};
 					C0F3D4451D2A7E01009BCC5A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = FLU98JG66T;
+						DevelopmentTeam = P883PD5GS6;
 						LastSwiftMigration = 0810;
 					};
 				};
@@ -455,6 +459,7 @@
 				C0580C3C1F026A25001CAD73 /* UnidadDidactiva.swift in Sources */,
 				C00AC4921F068385000D2B0D /* ImageStore.swift in Sources */,
 				C0580C271F025A11001CAD73 /* AppDelegate.swift in Sources */,
+				C03EEEEE1F28BDFD0009FC18 /* ColoresRea.swift in Sources */,
 				C0580C3E1F026A25001CAD73 /* VideoTime.swift in Sources */,
 				C0580C371F026365001CAD73 /* ReaIpadViewController.swift in Sources */,
 				C0580C391F026A25001CAD73 /* VideoStore.swift in Sources */,
@@ -486,6 +491,7 @@
 				C028A8001D2E6CE30014C810 /* Rea.swift in Sources */,
 				C0F823A11D49F92600835928 /* DuracionView.swift in Sources */,
 				C0A46D941D78443E0043A797 /* VideoTime.swift in Sources */,
+				C03EEEED1F28BDFD0009FC18 /* ColoresRea.swift in Sources */,
 				C028A7FB1D2E63DE0014C810 /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,7 +672,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FLU98JG66T;
+				DEVELOPMENT_TEAM = P883PD5GS6;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = REAUCMTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.ucm.REAUCMTV;
@@ -686,7 +693,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = FLU98JG66T;
+				DEVELOPMENT_TEAM = P883PD5GS6;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = REAUCMTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.ucm.REAUCMTV;
