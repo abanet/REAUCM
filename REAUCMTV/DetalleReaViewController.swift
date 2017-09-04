@@ -202,7 +202,7 @@ class DetalleReaViewController: UIViewController, UITableViewDataSource, UITable
   // Evitamos que deje de verse el texto cuando la celda tiene el focus.
   override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
     if let celdaPrevia = context.previouslyFocusedView as? VideoTableViewCell {
-      celdaPrevia.tituloVideoLabel.textColor = UIColor.white
+      celdaPrevia.tituloVideoLabel.textColor = UIColor.lightGray
     }
     
     if let siguienteCelda = context.nextFocusedView as? VideoTableViewCell {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="appleTV" orientation="landscape">
         <adaptation id="light"/>
     </device>
@@ -29,10 +29,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1920" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPb-SU-ULd">
-                                <rect key="frame" x="90" y="83" width="1740" height="56"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tytulo App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPb-SU-ULd">
+                                <rect key="frame" x="90" y="83" width="1740" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="di7-ED-J28"/>
+                                    <constraint firstAttribute="height" constant="80" id="di7-ED-J28"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -94,7 +94,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDV-n6-QRT">
-                                <rect key="frame" x="90" y="201" width="937" height="249"/>
+                                <rect key="frame" x="90" y="203" width="937" height="249"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="249" id="zBr-dw-C1t"/>
                                     <constraint firstAttribute="width" constant="937" id="zx1-Au-34k"/>
@@ -115,7 +115,7 @@
                             <constraint firstItem="PIr-YZ-ZW0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="W9k-c3-81C"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BIF-2c-5aK" secondAttribute="bottom" constant="60" id="ds4-uQ-2td"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BIF-2c-5aK" secondAttribute="trailing" constant="90" id="eYd-NM-e75"/>
-                            <constraint firstItem="oDV-n6-QRT" firstAttribute="top" secondItem="gPb-SU-ULd" secondAttribute="bottom" constant="62" id="pyU-kb-ZKJ"/>
+                            <constraint firstItem="oDV-n6-QRT" firstAttribute="top" secondItem="gPb-SU-ULd" secondAttribute="bottom" constant="40" id="pyU-kb-ZKJ"/>
                             <constraint firstItem="oDV-n6-QRT" firstAttribute="leading" secondItem="gPb-SU-ULd" secondAttribute="leading" id="tRQ-7P-rc7"/>
                             <constraint firstAttribute="trailing" secondItem="PIr-YZ-ZW0" secondAttribute="trailing" id="vCD-3k-C3c"/>
                             <constraint firstItem="gPb-SU-ULd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="90" id="xlC-jg-nFX"/>
@@ -197,7 +197,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="título del vídeo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEE-fn-iMP">
                                                     <rect key="frame" x="312" y="16" width="605" height="109"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lks-Xa-MXp">
